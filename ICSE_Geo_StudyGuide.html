@@ -1,0 +1,2128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ICSE Class 10 — Geography Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+/* ───────────────── RESET & BASE ───────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:#F5F2EB;color:#1a1a1a;display:flex;min-height:100vh;overflow-x:hidden}
+
+/* ───────────────── CSS VARIABLES ───────────────── */
+:root{
+  --sidebar-w:260px;
+  --bg:#F5F2EB;
+  --card:#FFFFFF;
+  --text:#1a1a1a;
+  --muted:#6b6b6b;
+  --shadow:0 2px 12px rgba(0,0,0,0.07);
+  --shadow-md:0 4px 20px rgba(0,0,0,0.10);
+  --radius:12px;
+  --radius-sm:8px;
+
+  /* Chapter accent colors */
+  --c-climate:#1976D2;
+  --c-climate-bg:#E3F2FD;
+  --c-soil:#6D4C41;
+  --c-soil-bg:#EFEBE9;
+  --c-veg:#2E7D32;
+  --c-veg-bg:#E8F5E9;
+  --c-water:#0277BD;
+  --c-water-bg:#E1F5FE;
+  --c-mineral:#BF360C;
+  --c-mineral-bg:#FBE9E7;
+  --c-agri:#558B2F;
+  --c-agri-bg:#F1F8E9;
+  --c-industry:#37474F;
+  --c-industry-bg:#ECEFF1;
+  --c-transport:#E65100;
+  --c-transport-bg:#FFF3E0;
+  --c-waste:#00695C;
+  --c-waste-bg:#E0F2F1;
+  --c-revise:#4527A0;
+  --c-revise-bg:#EDE7F6;
+}
+
+/* ───────────────── SIDEBAR ───────────────── */
+#sidebar{
+  width:var(--sidebar-w);
+  min-width:var(--sidebar-w);
+  background:#111827;
+  height:100vh;
+  position:fixed;
+  top:0;left:0;
+  display:flex;
+  flex-direction:column;
+  z-index:100;
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+#sidebar::-webkit-scrollbar{width:4px}
+#sidebar::-webkit-scrollbar-thumb{background:#374151;border-radius:4px}
+
+.sidebar-header{
+  padding:24px 20px 16px;
+  border-bottom:1px solid #1f2937;
+}
+.sidebar-title{
+  font-family:'Fraunces',serif;
+  font-size:17px;
+  color:#F9FAFB;
+  line-height:1.3;
+}
+.sidebar-sub{
+  font-size:11px;
+  color:#9CA3AF;
+  margin-top:4px;
+  letter-spacing:0.5px;
+  text-transform:uppercase;
+}
+
+.nav-section{padding:12px 0 8px;font-size:10px;color:#4B5563;text-transform:uppercase;letter-spacing:1px;padding-left:20px}
+.nav-item{
+  display:flex;align-items:center;gap:12px;
+  padding:10px 20px;
+  cursor:pointer;
+  color:#D1D5DB;
+  font-size:13.5px;
+  font-weight:500;
+  transition:all 0.2s;
+  border-left:3px solid transparent;
+  position:relative;
+}
+.nav-item:hover{background:#1f2937;color:#fff}
+.nav-item.active{background:#1f2937;color:#fff;border-left-color:var(--ch-color)}
+.nav-item .nav-icon{font-size:16px;width:20px;text-align:center;flex-shrink:0}
+.nav-item .nav-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--ch-color);
+  position:absolute;right:16px;top:50%;transform:translateY(-50%);
+  opacity:0;transition:opacity 0.2s;
+}
+.nav-item.active .nav-dot{opacity:1}
+
+/* ───────────────── MAIN CONTENT ───────────────── */
+#main{
+  margin-left:var(--sidebar-w);
+  flex:1;
+  min-height:100vh;
+}
+
+.chapter-page{display:none;animation:fadeIn 0.35s ease}
+.chapter-page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* Chapter Hero */
+.chapter-hero{
+  padding:44px 48px 36px;
+  background:linear-gradient(135deg, var(--ch-color) 0%, var(--ch-color-dark, var(--ch-color)) 100%);
+  position:relative;
+  overflow:hidden;
+}
+.chapter-hero::before{
+  content:'';position:absolute;right:-40px;top:-40px;
+  width:240px;height:240px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.06);
+}
+.chapter-hero::after{
+  content:'';position:absolute;right:60px;bottom:-60px;
+  width:180px;height:180px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.04);
+}
+.chapter-emoji{font-size:42px;margin-bottom:12px;display:block}
+.chapter-title{
+  font-family:'Fraunces',serif;
+  font-size:36px;
+  font-weight:900;
+  color:#fff;
+  line-height:1.1;
+}
+.chapter-subtitle{
+  color:rgba(255,255,255,0.8);
+  font-size:14px;
+  margin-top:8px;
+  max-width:560px;
+  line-height:1.6;
+}
+.chapter-num{
+  position:absolute;right:48px;top:44px;
+  font-family:'Fraunces',serif;
+  font-size:72px;
+  font-weight:900;
+  color:rgba(255,255,255,0.12);
+  line-height:1;
+}
+
+/* Content Area */
+.content-area{padding:36px 48px 60px}
+
+/* ───────────────── COMPONENTS ───────────────── */
+
+/* Section header */
+.sec-title{
+  font-family:'Fraunces',serif;
+  font-size:20px;
+  font-weight:700;
+  color:var(--ch-color);
+  margin:32px 0 16px;
+  display:flex;align-items:center;gap:10px;
+}
+.sec-title::after{
+  content:'';flex:1;
+  height:1px;background:linear-gradient(to right, var(--ch-color) 0%, transparent 100%);
+  opacity:0.3;margin-left:8px;
+}
+
+/* Cards grid */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:24px}
+.cards-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.cards-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:20px;
+  box-shadow:var(--shadow);
+  border:1px solid rgba(0,0,0,0.04);
+  transition:box-shadow 0.2s, transform 0.2s;
+}
+.card:hover{box-shadow:var(--shadow-md);transform:translateY(-1px)}
+.card-icon{font-size:24px;margin-bottom:10px;display:block}
+.card-title{font-weight:600;font-size:14px;margin-bottom:6px;color:var(--ch-color)}
+.card-body{font-size:13px;color:#374151;line-height:1.6}
+
+/* Colored card variants */
+.card-tinted{background:var(--ch-bg)}
+.card-border{border-left:4px solid var(--ch-color)}
+
+/* Badges */
+.badge{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:3px 10px;border-radius:20px;
+  font-size:11px;font-weight:600;
+  letter-spacing:0.3px;
+}
+.badge-star{background:#FFF3CD;color:#856404;border:1px solid #FFECB5}
+.badge-exam{background:#DCE8FF;color:#1244A3;border:1px solid #C3D5FF}
+.badge-imp{background:#FFE4E4;color:#C0392B;border:1px solid #FFCCCC}
+.badge-tip{background:#E8F5E9;color:#1B5E20;border:1px solid #C8E6C9}
+
+/* Accordion */
+.accordion{margin-bottom:10px}
+.acc-header{
+  background:var(--card);
+  border:1px solid rgba(0,0,0,0.07);
+  border-radius:var(--radius-sm);
+  padding:14px 18px;
+  cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;
+  font-weight:600;font-size:14px;
+  color:#1a1a1a;
+  transition:all 0.2s;
+  user-select:none;
+}
+.acc-header:hover{background:var(--ch-bg);border-color:var(--ch-color);color:var(--ch-color)}
+.acc-header.open{
+  background:var(--ch-color);color:#fff;
+  border-color:var(--ch-color);
+  border-radius:var(--radius-sm) var(--radius-sm) 0 0;
+}
+.acc-arrow{transition:transform 0.25s;font-size:12px;opacity:0.7}
+.acc-header.open .acc-arrow{transform:rotate(180deg)}
+.acc-body{
+  display:none;
+  background:var(--card);
+  border:1px solid rgba(0,0,0,0.07);
+  border-top:none;
+  border-radius:0 0 var(--radius-sm) var(--radius-sm);
+  padding:18px;
+  font-size:13.5px;line-height:1.7;color:#374151;
+}
+.acc-body.open{display:block}
+.acc-body ul{padding-left:18px;margin-top:6px}
+.acc-body ul li{margin-bottom:5px}
+.acc-body strong{color:#1a1a1a}
+
+/* Tables */
+.styled-table{
+  width:100%;border-collapse:collapse;
+  background:var(--card);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  font-size:13px;
+  margin-bottom:24px;
+}
+.styled-table thead tr{background:var(--ch-color);color:#fff}
+.styled-table th{padding:12px 16px;text-align:left;font-weight:600;font-size:12.5px;letter-spacing:0.3px}
+.styled-table td{padding:11px 16px;border-bottom:1px solid #f0f0f0;vertical-align:top;line-height:1.5}
+.styled-table tbody tr:last-child td{border-bottom:none}
+.styled-table tbody tr:hover{background:#FAFAFA}
+.styled-table tbody tr:nth-child(even){background:#FAFAF8}
+
+/* Info boxes */
+.info-box{
+  border-radius:var(--radius-sm);
+  padding:14px 18px;
+  margin:14px 0;
+  font-size:13.5px;
+  line-height:1.6;
+  border-left:4px solid;
+}
+.info-box.exam{background:#EEF3FF;border-color:#4169E1;color:#1a1a1a}
+.info-box.exam::before{content:'📝 Exam Tip: ';font-weight:700;color:#4169E1}
+.info-box.imp{background:#FFF5F5;border-color:#E53E3E;color:#1a1a1a}
+.info-box.imp::before{content:'⭐ Important: ';font-weight:700;color:#C53030}
+.info-box.note{background:#FFFBEB;border-color:#D97706;color:#1a1a1a}
+.info-box.note::before{content:'💡 Note: ';font-weight:700;color:#B45309}
+.info-box.remember{background:#F0FFF4;border-color:#38A169;color:#1a1a1a}
+.info-box.remember::before{content:'🧠 Remember: ';font-weight:700;color:#276749}
+
+/* Key facts pills */
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.pill{
+  background:var(--ch-bg);color:var(--ch-color);
+  border:1px solid var(--ch-color);
+  border-radius:20px;padding:5px 14px;
+  font-size:12.5px;font-weight:500;
+}
+
+/* Comparison blocks */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+.compare-block{
+  background:var(--card);border-radius:var(--radius);padding:20px;
+  box-shadow:var(--shadow);border-top:4px solid var(--block-color, var(--ch-color));
+}
+.compare-block h4{font-weight:700;font-size:14px;margin-bottom:10px;color:var(--block-color, var(--ch-color))}
+.compare-block ul{padding-left:16px;font-size:13px;line-height:1.7;color:#374151}
+
+/* Flow / steps */
+.steps{display:flex;flex-direction:column;gap:0;position:relative;margin:16px 0 24px}
+.steps::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--ch-color),transparent)}
+.step{display:flex;gap:16px;align-items:flex-start;padding:0 0 20px;position:relative}
+.step-num{
+  width:36px;height:36px;flex-shrink:0;
+  background:var(--ch-color);color:#fff;
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:14px;
+  position:relative;z-index:1;
+}
+.step-content{padding-top:6px}
+.step-content strong{font-size:14px;display:block;margin-bottom:4px}
+.step-content p{font-size:13px;color:#4B5563;line-height:1.6}
+
+/* Season cards */
+.season-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.season-card{
+  border-radius:var(--radius);padding:18px 14px;text-align:center;
+  color:#fff;position:relative;overflow:hidden;
+}
+.season-card::after{content:'';position:absolute;bottom:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.08)}
+.season-icon{font-size:28px;margin-bottom:8px}
+.season-name{font-family:'Fraunces',serif;font-size:14px;font-weight:700;margin-bottom:4px}
+.season-months{font-size:11px;opacity:0.85;margin-bottom:10px;font-weight:500}
+.season-facts{font-size:11.5px;opacity:0.9;line-height:1.6;text-align:left}
+
+/* Soil color swatches */
+.soil-card{
+  border-radius:var(--radius);overflow:hidden;
+  box-shadow:var(--shadow);background:var(--card);
+}
+.soil-swatch{height:8px}
+.soil-body{padding:18px}
+.soil-title{font-weight:700;font-size:15px;margin-bottom:10px}
+.soil-meta{display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:12.5px;color:#4B5563}
+.soil-meta-item{background:#FAFAF8;border-radius:6px;padding:7px 10px}
+.soil-meta-label{font-size:10.5px;text-transform:uppercase;letter-spacing:0.5px;color:#9CA3AF;margin-bottom:2px}
+.soil-meta-value{font-weight:500;color:#1a1a1a}
+
+/* Crop cards */
+.crop-card{
+  background:var(--card);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden;margin-bottom:10px;
+  border:1px solid rgba(0,0,0,0.05);
+}
+.crop-header{
+  padding:14px 18px;
+  background:var(--ch-bg);
+  display:flex;justify-content:space-between;align-items:center;
+  cursor:pointer;
+  user-select:none;
+}
+.crop-header:hover{filter:brightness(0.97)}
+.crop-name{font-weight:700;font-size:14.5px;display:flex;align-items:center;gap:8px}
+.crop-season-badge{
+  font-size:11px;padding:2px 10px;border-radius:20px;
+  font-weight:600;
+}
+.crop-body{display:none;padding:18px}
+.crop-body.open{display:block}
+.crop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:12px}
+.crop-fact{background:#F9F9F9;border-radius:8px;padding:10px 12px}
+.crop-fact-label{font-size:10.5px;text-transform:uppercase;letter-spacing:0.5px;color:#9CA3AF;margin-bottom:3px}
+.crop-fact-value{font-size:13px;font-weight:500;color:#1a1a1a}
+
+/* Energy cards */
+.energy-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-bottom:24px}
+.energy-card{
+  background:var(--card);border-radius:var(--radius);padding:18px;
+  box-shadow:var(--shadow);border-top:4px solid var(--e-color,#888);
+}
+.energy-card h4{font-weight:700;font-size:14px;margin-bottom:8px;color:var(--e-color,#333)}
+.energy-card p{font-size:12.5px;color:#4B5563;line-height:1.6}
+
+/* Quick revision page */
+.qr-chapter{
+  background:var(--card);border-radius:var(--radius);
+  box-shadow:var(--shadow);overflow:hidden;margin-bottom:16px;
+}
+.qr-header{
+  padding:14px 20px;
+  background:var(--qr-color, #333);
+  color:#fff;
+  display:flex;justify-content:space-between;align-items:center;
+  cursor:pointer;user-select:none;
+}
+.qr-header h3{font-weight:700;font-size:15px;font-family:'Fraunces',serif}
+.qr-body{display:none;padding:18px 24px}
+.qr-body.open{display:block}
+.qr-list{padding-left:0;list-style:none}
+.qr-list li{
+  padding:6px 0 6px 24px;
+  font-size:13.5px;
+  border-bottom:1px dashed #f0f0f0;
+  position:relative;
+  line-height:1.5;
+}
+.qr-list li::before{content:'→';position:absolute;left:0;color:var(--qr-color,#555);font-weight:700}
+.qr-list li:last-child{border-bottom:none}
+.qr-list li strong{color:var(--qr-color, #333)}
+
+/* Divider */
+.divider{height:1px;background:linear-gradient(to right,transparent,rgba(0,0,0,0.1),transparent);margin:28px 0}
+
+/* Responsive tweak */
+@media(max-width:900px){
+  :root{--sidebar-w:220px}
+  .content-area{padding:24px 24px 48px}
+  .chapter-hero{padding:32px 24px 24px}
+  .chapter-num{right:24px;font-size:56px}
+  .season-cards{grid-template-columns:repeat(2,1fr)}
+  .cards-grid-3,.cards-grid-2,.compare-grid{grid-template-columns:1fr}
+}
+
+/* ───────────────── CHAPTER THEME CLASSES ───────────────── */
+.ch-climate{--ch-color:var(--c-climate);--ch-bg:var(--c-climate-bg)}
+.ch-soil{--ch-color:var(--c-soil);--ch-bg:var(--c-soil-bg)}
+.ch-veg{--ch-color:var(--c-veg);--ch-bg:var(--c-veg-bg)}
+.ch-water{--ch-color:var(--c-water);--ch-bg:var(--c-water-bg)}
+.ch-mineral{--ch-color:var(--c-mineral);--ch-bg:var(--c-mineral-bg)}
+.ch-agri{--ch-color:var(--c-agri);--ch-bg:var(--c-agri-bg)}
+.ch-industry{--ch-color:var(--c-industry);--ch-bg:var(--c-industry-bg)}
+.ch-transport{--ch-color:var(--c-transport);--ch-bg:var(--c-transport-bg)}
+.ch-waste{--ch-color:var(--c-waste);--ch-bg:var(--c-waste-bg)}
+.ch-revise{--ch-color:var(--c-revise);--ch-bg:var(--c-revise-bg)}
+
+/* tag labels inside content */
+.tag{display:inline-block;padding:1px 8px;border-radius:4px;font-size:11px;font-weight:600;margin-left:6px}
+.tag-k{background:#FFF3CD;color:#856404}
+.tag-r{background:#E3F2FD;color:#1565C0}
+.tag-z{background:#F3E5F5;color:#6A1B9A}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ SIDEBAR ═══════════════ -->
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-title">📚 ICSE Geography</div>
+    <div class="sidebar-sub">Class 10 · Study Guide</div>
+  </div>
+
+  <div class="nav-section">Chapters</div>
+
+  <div class="nav-item active" onclick="showChapter('climate')" style="--ch-color:#2196F3">
+    <span class="nav-icon">🌤</span> Climate
+    <span class="nav-dot"></span>
+  </div>
+  <div class="nav-item" onclick="showChapter('soil')" style="--ch-color:#795548">
+    <span class="nav-icon">🌍</span> Soil Resources
+    <span class="nav-dot"></span>
+  </div>
+  <div class="nav-item" onclick="showChapter('vegetation')" style="--ch-color:#388E3C">
+    <span class="nav-icon">🌿</span> Natural Vegetation
+    <span class="nav-dot"></span>
+  </div>
+  <div class="nav-item" onclick="showChapter('water')" style="--ch-color:#0288D1">
+    <span class="nav-icon">💧</span> Water Resources
+    <span class="nav-dot"></span>
+  </div>
+  <div class="nav-item" onclick="showChapter('mineral')" style="--ch-color:#BF360C">
+    <span class="nav-icon">⛏️</span> Minerals & Energy
+    <span class="nav-dot"></span>
+  </div>
+  <div class="nav-item" onclick="showChapter('agriculture')" style="--ch-color:#558B2F">
+    <span class="nav-icon">🌾</span> Agriculture
+    <span class="nav-dot"></span>
+  </div>
+  <div class="nav-item" onclick="showChapter('industry')" style="--ch-color:#37474F">
+    <span class="nav-icon">🏭</span> Manufacturing
+    <span class="nav-dot"></span>
+  </div>
+  <div class="nav-item" onclick="showChapter('transport')" style="--ch-color:#E65100">
+    <span class="nav-icon">🚆</span> Transport
+    <span class="nav-dot"></span>
+  </div>
+  <div class="nav-item" onclick="showChapter('waste')" style="--ch-color:#00695C">
+    <span class="nav-icon">♻️</span> Waste Management
+    <span class="nav-dot"></span>
+  </div>
+
+  <div class="nav-section">Exam</div>
+  <div class="nav-item" onclick="showChapter('revise')" style="--ch-color:#4527A0">
+    <span class="nav-icon">⚡</span> Quick Revision
+    <span class="nav-dot"></span>
+  </div>
+</nav>
+
+<!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+<main id="main">
+
+<!-- ░░░░░░░░░ CHAPTER 4: CLIMATE ░░░░░░░░░ -->
+<section id="ch-climate" class="chapter-page ch-climate active">
+  <div class="chapter-hero" style="background:linear-gradient(135deg,#1565C0,#1976D2,#42A5F5)">
+    <span class="chapter-emoji">🌤</span>
+    <div class="chapter-title">Climate of India</div>
+    <div class="chapter-subtitle">Monsoon, seasons, temperature and rainfall patterns — one of the most frequently asked topics in the paper.</div>
+    <div class="chapter-num">04</div>
+  </div>
+
+  <div class="content-area">
+
+    <div class="sec-title">🗂 Overview</div>
+    <div class="cards-grid">
+      <div class="card card-tinted card-border">
+        <span class="card-icon">🌏</span>
+        <div class="card-title">Climate Type</div>
+        <div class="card-body">India has a <strong>Tropical Monsoon Climate</strong>. Characterized by seasonal reversal of winds, hot summers, and a distinct rainy season.</div>
+      </div>
+      <div class="card card-tinted card-border">
+        <span class="card-icon">🌡️</span>
+        <div class="card-title">Temperature Range</div>
+        <div class="card-body">Varies from <strong>below 0°C</strong> in Himalayan regions to <strong>above 48°C</strong> in Thar Desert. Coastal areas have moderate, equable climate.</div>
+      </div>
+      <div class="card card-tinted card-border">
+        <span class="card-icon">🌧️</span>
+        <div class="card-title">Rainfall Range</div>
+        <div class="card-body">From <strong>11 cm/year</strong> (Jaisalmer, Rajasthan) to <strong>1,187 cm/year</strong> (Mawsynram, Meghalaya — highest in world).</div>
+      </div>
+      <div class="card card-tinted card-border">
+        <span class="card-icon">💨</span>
+        <div class="card-title">Monsoon Wind</div>
+        <div class="card-body">A <strong>periodic wind</strong> that completely reverses its direction seasonally. SW in summer (rain-bearing), NE in winter (dry).</div>
+      </div>
+    </div>
+
+    <!-- Factors affecting climate -->
+    <div class="sec-title">🔍 Factors Affecting India's Climate</div>
+    <table class="styled-table">
+      <thead><tr><th>Factor</th><th>How it affects climate</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Latitude</strong></td><td>Places near equator are hotter. S India is closer to equator than N India.</td><td>Chennai is hotter than Delhi in winter</td></tr>
+        <tr><td><strong>Altitude</strong></td><td>Temperature decreases ~6.5°C per 1000m rise. Higher = cooler.</td><td>Shimla is cooler than Delhi</td></tr>
+        <tr><td><strong>Distance from Sea</strong></td><td>Coastal areas have moderate temps (land & sea breezes). Interior = extreme range.</td><td>Mumbai (moderate) vs Delhi (extreme)</td></tr>
+        <tr><td><strong>Relief / Mountains</strong></td><td>Mountains block winds and force them to rise, causing rainfall on windward side.</td><td>Western Ghats → heavy rain on west, rain shadow on east</td></tr>
+        <tr><td><strong>Ocean Currents</strong></td><td>Warm currents raise temp; cold currents lower temp and reduce rainfall.</td><td>Warm Arabian Sea current warms W coast</td></tr>
+        <tr><td><strong>Prevailing Winds</strong></td><td>SW Monsoon brings rain; NE winds are dry. Direction determines rainfall.</td><td>SW Monsoon → June–Sep rain</td></tr>
+      </tbody>
+    </table>
+
+    <div class="info-box exam">Favourite "give a reason" question: Why does Mangaluru get more rain than Chennai in summer? Mangaluru is on the windward side of Western Ghats; Chennai is on the leeward (rain shadow) side.</div>
+
+    <!-- 4 Seasons -->
+    <div class="sec-title">🗓 The Four Seasons of India</div>
+    <div class="season-cards">
+      <div class="season-card" style="background:linear-gradient(160deg,#E65100,#FF7043)">
+        <div class="season-icon">☀️</div>
+        <div class="season-name">Summer</div>
+        <div class="season-months">March – May</div>
+        <div class="season-facts">• Temp rises to 40–48°C in NW India<br>• Low pressure develops over NW<br>• Hot dry winds called <strong>Loo</strong> blow in N India<br>• Dust storms common in Rajasthan<br>• Nor'westers (Kalbaisakhi) in WB & NE</div>
+      </div>
+      <div class="season-card" style="background:linear-gradient(160deg,#0277BD,#0288D1)">
+        <div class="season-icon">🌧️</div>
+        <div class="season-name">Monsoon</div>
+        <div class="season-months">June – September</div>
+        <div class="season-facts">• SW Monsoon arrives (Kerala ~June 1)<br>• 2 branches: Arabian Sea + Bay of Bengal<br>• 75–90% of India's annual rainfall<br>• Humid, heavy rain, floods possible<br>• "Burst of monsoon" on arrival</div>
+      </div>
+      <div class="season-card" style="background:linear-gradient(160deg,#558B2F,#7CB342)">
+        <div class="season-icon">🍂</div>
+        <div class="season-name">Retreating Monsoon</div>
+        <div class="season-months">October – November</div>
+        <div class="season-facts">• SW winds retreat southward<br>• NE winds pick up moisture over Bay of Bengal<br>• Tamil Nadu &amp; SE coast get heavy rain<br>• Cyclones form in Bay of Bengal<br>• Temp begins to fall</div>
+      </div>
+      <div class="season-card" style="background:linear-gradient(160deg,#37474F,#546E7A)">
+        <div class="season-icon">❄️</div>
+        <div class="season-name">Winter</div>
+        <div class="season-months">December – February</div>
+        <div class="season-facts">• NW winds blow (cold, dry)<br>• Temperature drops; frost in N plains<br>• Western Disturbances bring rain to NW<br>• Dense fog in N India<br>• Pleasant in peninsular India</div>
+      </div>
+    </div>
+
+    <!-- Monsoon Mechanism -->
+    <div class="sec-title">💨 Monsoon Mechanism <span class="badge badge-imp">⭐ Always Asked</span></div>
+    <div class="info-box imp">The mechanism of monsoon is one of the highest-frequency questions in ICSE Geography. Understand the steps, don't just memorise them.</div>
+
+    <div class="accordion">
+      <div class="acc-header open" onclick="toggleAcc(this)">🌞 Why does the SW Monsoon occur? (Summer → Monsoon) <span class="acc-arrow">▼</span></div>
+      <div class="acc-body open">
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><div class="step-content"><strong>Sun shifts North</strong><p>After March, the sun moves northwards. The ITCZ (Inter-Tropical Convergence Zone) also shifts north.</p></div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-content"><strong>Low pressure over NW India</strong><p>The Thar Desert and NW Indian plains heat up rapidly, creating an intense low pressure area (depression).</p></div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-content"><strong>Winds rush in from ocean</strong><p>High pressure exists over the southern Indian Ocean. Winds blow from high → low pressure, i.e., from the ocean towards India.</p></div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-content"><strong>Coriolis Effect</strong><p>Earth's rotation deflects these winds to the right in the N hemisphere. Southern hemisphere SE trade winds cross equator and become SW winds.</p></div></div>
+          <div class="step"><div class="step-num">5</div><div class="step-content"><strong>Two Branches form</strong><p><strong>Arabian Sea Branch</strong> → hits Western Ghats → heavy rain on west coast → crosses Deccan, reaches N India. <strong>Bay of Bengal Branch</strong> → enters through NE India → Assam, Meghalaya (Mawsynram) → moves W &amp; N.</p></div></div>
+          <div class="step"><div class="step-num">6</div><div class="step-content"><strong>Why Mawsynram gets most rain</strong><p>Situated in funnel-shaped Khasi Hills, Meghalaya. The Bay of Bengal branch is channelled and forced to rise sharply → extremely heavy orographic rainfall (~1187 cm/year).</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="acc-header" onclick="toggleAcc(this)">🍂 Retreating Monsoon — Why does Tamil Nadu get rain in Oct–Nov? <span class="acc-arrow">▼</span></div>
+      <div class="acc-body">
+        <ul>
+          <li>By October, the low pressure over NW India weakens as the sun moves south.</li>
+          <li>The SW Monsoon starts to retreat from NW India towards SE India.</li>
+          <li>NE trade winds blow over the Bay of Bengal and pick up moisture.</li>
+          <li>These moisture-laden NE winds strike Tamil Nadu and SE coast → heavy rain.</li>
+          <li>Chennai receives most of its rain during this season, not during SW Monsoon.</li>
+        </ul>
+        <div class="info-box exam" style="margin-top:12px">This is why Goa gets more rain than Puducherry in summer — Goa is on the windward side of Western Ghats; Puducherry is on the leeward side and misses the SW Monsoon.</div>
+      </div>
+    </div>
+
+    <!-- Important Reasons (Exam oriented) -->
+    <div class="sec-title">🎯 "Give a Reason" — Top Questions</div>
+    <table class="styled-table">
+      <thead><tr><th>Question Pattern</th><th>Answer Clue</th></tr></thead>
+      <tbody>
+        <tr><td>Why is Mawsynram the rainiest place?</td><td>Funnel-shaped Khasi Hills; Bay of Bengal branch forced to rise sharply → heavy orographic rain</td></tr>
+        <tr><td>Why is Mangaluru cooler than Delhi in summer?</td><td>Mangaluru = coastal (sea moderates temp); Delhi = interior (extreme continental climate)</td></tr>
+        <tr><td>Why does Tamil Nadu get rain in Oct–Nov?</td><td>Retreating Monsoon; NE winds pick up moisture from Bay of Bengal and hit SE coast</td></tr>
+        <tr><td>Why does the Western coast get heavy rain in summer?</td><td>SW Monsoon hits Western Ghats (windward side) → forced uplift → heavy orographic rain</td></tr>
+        <tr><td>Why does Rajasthan get very little rain?</td><td>Located in leeward (rain shadow) side; far from sea; Aravalli runs parallel to monsoon winds</td></tr>
+        <tr><td>Why is the temperature range higher in Delhi than Mumbai?</td><td>Delhi is inland (continental climate); Mumbai is coastal (sea moderates temp)</td></tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+<!-- ░░░░░░░░░ CHAPTER 5: SOIL ░░░░░░░░░ -->
+<section id="ch-soil" class="chapter-page ch-soil">
+  <div class="chapter-hero" style="background:linear-gradient(135deg,#4E342E,#6D4C41,#A1887F)">
+    <span class="chapter-emoji">🌍</span>
+    <div class="chapter-title">Soil Resources</div>
+    <div class="chapter-subtitle">Types, distribution, characteristics, and how to protect our most precious layer of land.</div>
+    <div class="chapter-num">05</div>
+  </div>
+
+  <div class="content-area">
+    <div class="sec-title">🗂 Four Main Soil Types</div>
+    <div class="info-box imp">You must know: colour, texture, key minerals, crops, distribution state — for all 4 soils. These are tested every year.</div>
+
+    <!-- Alluvial -->
+    <div class="accordion">
+      <div class="acc-header" onclick="toggleAcc(this)">🟡 Alluvial Soil — Most widespread, most fertile <span class="acc-arrow">▼</span></div>
+      <div class="acc-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div>
+            <p><strong>Formation:</strong> Deposited by rivers (Ganga, Brahmaputra, Indus and their tributaries) over thousands of years.</p>
+            <p style="margin-top:8px"><strong>Distribution:</strong> Indo-Gangetic Plains, river deltas (Krishna, Godavari, Kaveri), coastal plains — about 40% of India's land.</p>
+            <p style="margin-top:8px"><strong>Two types:</strong></p>
+            <ul style="padding-left:18px;margin-top:6px;font-size:13px;line-height:1.7">
+              <li><strong>Khadar</strong> — New alluvial, near rivers, lighter in colour, more fertile, renewed every year by floods</li>
+              <li><strong>Bhangar</strong> — Old alluvial, away from rivers, darker, contains calcium carbonate (kankar) nodules</li>
+            </ul>
+          </div>
+          <div>
+            <div class="soil-meta" style="display:block">
+              <div class="soil-meta-item" style="margin-bottom:8px"><div class="soil-meta-label">Colour</div><div class="soil-meta-value">Light grey to greyish brown</div></div>
+              <div class="soil-meta-item" style="margin-bottom:8px"><div class="soil-meta-label">Texture</div><div class="soil-meta-value">Sandy loam to clayey</div></div>
+              <div class="soil-meta-item" style="margin-bottom:8px"><div class="soil-meta-label">Rich in</div><div class="soil-meta-value">Potash, phosphoric acid, lime</div></div>
+              <div class="soil-meta-item" style="margin-bottom:8px"><div class="soil-meta-label">Deficient in</div><div class="soil-meta-value">Nitrogen, humus</div></div>
+              <div class="soil-meta-item"><div class="soil-meta-label">Major crops</div><div class="soil-meta-value">Rice, wheat, sugarcane, cotton, jute, oilseeds</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="info-box exam" style="margin-top:12px">Alluvial soil = India's most important soil. Supports agriculture for over 600 million people.</div>
+      </div>
+    </div>
+
+    <!-- Black -->
+    <div class="accordion">
+      <div class="acc-header" onclick="toggleAcc(this)">⚫ Black Soil (Regur) — Cotton's best friend <span class="acc-arrow">▼</span></div>
+      <div class="acc-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div>
+            <p><strong>Formation:</strong> Weathering of basic <strong>igneous rocks</strong> (basalt/Deccan trap rocks). That's why it's also called Regur or cotton soil.</p>
+            <p style="margin-top:8px"><strong>Distribution:</strong> Deccan Plateau — Maharashtra, Gujarat, MP, parts of Karnataka, Andhra Pradesh, Telangana.</p>
+            <p style="margin-top:8px"><strong>Special Features:</strong></p>
+            <ul style="padding-left:18px;margin-top:6px;font-size:13px;line-height:1.7">
+              <li><strong>Self-ploughing</strong> — Cracks when dry, mixes its own lower layers</li>
+              <li><strong>High moisture retention</strong> — Holds water for long after rains</li>
+              <li>Swells when wet, shrinks when dry</li>
+            </ul>
+          </div>
+          <div>
+            <div class="soil-meta" style="display:block">
+              <div class="soil-meta-item" style="margin-bottom:8px"><div class="soil-meta-label">Colour</div><div class="soil-meta-value">Dark black to grey (iron titaniferous magnetite)</div></div>
+              <div class="soil-meta-item" style="margin-bottom:8px"><div class="soil-meta-label">Texture</div><div class="soil-meta-value">Fine-grained, clayey</div></div>
+              <div class="soil-meta-item" style="margin-bottom:8px"><div class="soil-meta-label">Rich in</div><div class="soil-meta-value">Iron, lime, calcium, potassium, aluminium</div></div>
+              <div class="soil-meta-item" style="margin-bottom:8px"><div class="soil-meta-label">Deficient in</div><div class="soil-meta-value">Nitrogen, phosphorus, organic matter</div></div>
+              <div class="soil-meta-item"><div class="soil-meta-label">Major crops</div><div class="soil-meta-value"><strong>Cotton</strong> (ideal!), sugarcane, jowar, groundnut, sunflower</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="info-box imp" style="margin-top:12px">Black soil is ideal for cotton because it retains moisture well and cotton needs long periods of dry weather at harvest time — black soil provides both.</div>
+      </div>
+    </div>
+
+    <!-- Red -->
+    <div class="accordion">
+      <div class="acc-header" onclick="toggleAcc(this)">🔴 Red Soil — Iron-rich, needs fertilizers <span class="acc-arrow">▼</span></div>
+      <div class="acc-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div>
+            <p><strong>Formation:</strong> Weathering of ancient crystalline and metamorphic rocks (gneiss, granite).</p>
+            <p style="margin-top:8px"><strong>Distribution:</strong> Tamil Nadu, Goa, Karnataka, SE Maharashtra, Andhra Pradesh, Odisha, Jharkhand, MP — mostly in Deccan and Eastern peninsula.</p>
+            <p style="margin-top:8px"><strong>Note:</strong> Appears red due to diffusion of iron oxide. When hydrated (in subsoil), it appears yellow.</p>
+          </div>
+          <div>
+            <div class="soil-meta" style="display:block">
+              <div class="soil-meta-item" style="margin-bottom:8px"><div class="soil-meta-label">Colour</div><div class="soil-meta-value">Red (iron oxide), yellow in subsoil</div></div>
+              <div class="soil-meta-item" style="margin-bottom:8px"><div class="soil-meta-label">Texture</div><div class="soil-meta-value">Sandy to loamy</div></div>
+              <div class="soil-meta-item" style="margin-bottom:8px"><div class="soil-meta-label">Rich in</div><div class="soil-meta-value">Iron, some potash</div></div>
+              <div class="soil-meta-item" style="margin-bottom:8px"><div class="soil-meta-label">Deficient in</div><div class="soil-meta-value">Nitrogen, phosphorus, humus, lime</div></div>
+              <div class="soil-meta-item"><div class="soil-meta-label">Major crops</div><div class="soil-meta-value">Groundnut, millets, cotton, tobacco, vegetables</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="info-box note" style="margin-top:12px">Dry farming (without much water) is preferred in red soil areas because red soil is porous, drains quickly, and doesn't retain water well.</div>
+      </div>
+    </div>
+
+    <!-- Laterite -->
+    <div class="accordion">
+      <div class="acc-header" onclick="toggleAcc(this)">🟤 Laterite Soil — Leached, hard, useful as building material <span class="acc-arrow">▼</span></div>
+      <div class="acc-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div>
+            <p><strong>Formation:</strong> Formed in high temperature, high rainfall conditions by <strong>leaching</strong> — heavy rain washes away minerals like silica, leaving behind iron and aluminium oxides.</p>
+            <p style="margin-top:8px"><strong>Distribution:</strong> Western Ghats, parts of Eastern Ghats, NE India, Odisha, Maharashtra highlands, Karnataka.</p>
+            <p style="margin-top:8px"><strong>Special Feature:</strong> Soft and porous when wet; extremely hard when dry — <em>hence used as building material (bricks)</em>.</p>
+          </div>
+          <div>
+            <div class="soil-meta" style="display:block">
+              <div class="soil-meta-item" style="margin-bottom:8px"><div class="soil-meta-label">Colour</div><div class="soil-meta-value">Red (iron oxide) and yellow</div></div>
+              <div class="soil-meta-item" style="margin-bottom:8px"><div class="soil-meta-label">Texture</div><div class="soil-meta-value">Coarse, porous, friable</div></div>
+              <div class="soil-meta-item" style="margin-bottom:8px"><div class="soil-meta-label">Rich in</div><div class="soil-meta-value">Iron oxide, aluminium hydroxide</div></div>
+              <div class="soil-meta-item" style="margin-bottom:8px"><div class="soil-meta-label">Deficient in</div><div class="soil-meta-value">Nitrogen, phosphorus, calcium, humus</div></div>
+              <div class="soil-meta-item"><div class="soil-meta-label">Major crops</div><div class="soil-meta-value">Tea, coffee, cashew, coconut (with manure)</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="info-box exam" style="margin-top:12px">Physical characteristic of laterite soil that's often asked: It's hard and durable when dry → used as building material (bricks). Also: it is the result of leaching process.</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Soil Erosion -->
+    <div class="sec-title">⚠️ Soil Erosion</div>
+
+    <div class="cards-grid-3">
+      <div class="card card-tinted card-border">
+        <span class="card-icon">🌳</span>
+        <div class="card-title">Human Causes</div>
+        <div class="card-body">Deforestation, overgrazing, faulty farming, shifting cultivation (jhum), construction activities</div>
+      </div>
+      <div class="card card-tinted card-border">
+        <span class="card-icon">🌊</span>
+        <div class="card-title">Natural Causes</div>
+        <div class="card-body">Running water (most common!), wind erosion (arid regions), glaciers, waves, mass movements</div>
+      </div>
+      <div class="card card-tinted card-border">
+        <span class="card-icon">🔬</span>
+        <div class="card-title">Types of Erosion</div>
+        <div class="card-body"><strong>Sheet erosion:</strong> thin top layer washed away uniformly. <strong>Rill/Gully:</strong> deep cuts formed. <strong>Wind erosion:</strong> in deserts.</div>
+      </div>
+    </div>
+
+    <div class="sec-title">🛡 Soil Conservation Methods</div>
+    <table class="styled-table">
+      <thead><tr><th>Method</th><th>Description</th><th>Suitable for</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Terrace / Step Farming</strong></td><td>Hill slopes cut into horizontal steps to slow runoff and hold soil</td><td>Hilly regions <span class="badge badge-imp">⭐ Most asked</span></td></tr>
+        <tr><td><strong>Contour Ploughing</strong></td><td>Ploughing along contour lines (not down slopes) to reduce water speed</td><td>Slopes and gentle hills</td></tr>
+        <tr><td><strong>Afforestation</strong></td><td>Planting trees to bind soil; roots hold soil; canopy reduces raindrop impact</td><td>All regions</td></tr>
+        <tr><td><strong>Crop Rotation</strong></td><td>Different crops grown in turns — prevents soil from being exhausted</td><td>Agricultural fields</td></tr>
+        <tr><td><strong>Bunding / Check Dams</strong></td><td>Small earthen walls or dams to slow water flow and trap silt</td><td>River banks, sloping fields</td></tr>
+        <tr><td><strong>Windbreaks / Shelter belts</strong></td><td>Rows of trees planted to reduce wind speed and prevent wind erosion</td><td>Arid/desert areas</td></tr>
+        <tr><td><strong>Strip Cropping</strong></td><td>Crops grown in alternating strips — stubble from one strip protects next</td><td>Plains</td></tr>
+      </tbody>
+    </table>
+
+    <div class="info-box exam">Common reason question: "Why is terrace farming ideal for hilly regions?" — Hill slope is cut into horizontal terraces, which reduces runoff speed, holds water, and prevents soil from washing away downslope.</div>
+    <div class="info-box note">Deepening river beds prevents bank and shore erosion by giving floodwaters more space, reducing the chance of rivers overflowing and eroding banks.</div>
+
+  </div>
+</section>
+
+<!-- ░░░░░░░░░ CHAPTER 6: NATURAL VEGETATION ░░░░░░░░░ -->
+<section id="ch-vegetation" class="chapter-page ch-veg">
+  <div class="chapter-hero" style="background:linear-gradient(135deg,#1B5E20,#2E7D32,#43A047)">
+    <span class="chapter-emoji">🌿</span>
+    <div class="chapter-title">Natural Vegetation</div>
+    <div class="chapter-subtitle">India's forests — types, distribution, importance and conservation.</div>
+    <div class="chapter-num">06</div>
+  </div>
+
+  <div class="content-area">
+
+    <div class="sec-title">🌳 Why Forests Matter</div>
+    <div class="cards-grid">
+      <div class="card card-tinted card-border"><span class="card-icon">💧</span><div class="card-title">Water Cycle</div><div class="card-body">Trees absorb rainwater; roots prevent surface runoff; forests maintain groundwater level</div></div>
+      <div class="card card-tinted card-border"><span class="card-icon">🌱</span><div class="card-title">Soil Protection</div><div class="card-body">Root systems bind soil; tree canopy breaks raindrop impact; prevents erosion</div></div>
+      <div class="card card-tinted card-border"><span class="card-icon">🌡️</span><div class="card-title">Climate Regulation</div><div class="card-body">Absorb CO₂; release O₂; regulate temperature; increase humidity and rainfall</div></div>
+      <div class="card card-tinted card-border"><span class="card-icon">🐯</span><div class="card-title">Biodiversity</div><div class="card-body">Habitat for wildlife, birds, insects. India is a mega-biodiversity country with 8% of world's species</div></div>
+      <div class="card card-tinted card-border"><span class="card-icon">🪵</span><div class="card-title">Economic Value</div><div class="card-body">Timber, fuel wood, gum, resin, rubber, medicine, honey, lac — major forest products</div></div>
+      <div class="card card-tinted card-border"><span class="card-icon">🏘️</span><div class="card-title">Livelihood</div><div class="card-body">Over 100 million tribal people depend directly on forests for food, shelter and income</div></div>
+    </div>
+
+    <!-- Forest Types -->
+    <div class="sec-title">🗺 Types of Vegetation</div>
+    <div class="info-box imp">All 5 forest types are regularly tested — know rainfall, location, trees, and one special feature for each.</div>
+
+    <!-- Tropical Evergreen -->
+    <div class="accordion">
+      <div class="acc-header" onclick="toggleAcc(this)">🌴 Tropical Evergreen Forests — Dense, year-round green <span class="acc-arrow">▼</span></div>
+      <div class="acc-body">
+        <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px">
+          <div>
+            <p><strong>Rainfall needed:</strong> More than 200 cm/year, no distinct dry season</p>
+            <p style="margin-top:8px"><strong>Temperature:</strong> High (25–30°C) and uniform year-round</p>
+            <p style="margin-top:8px"><strong>Distribution:</strong> Western Ghats (coastal strip), Andaman & Nicobar Islands, NE India (Assam, Meghalaya)</p>
+            <p style="margin-top:8px"><strong>Key Features:</strong></p>
+            <ul style="padding-left:18px;margin-top:4px;font-size:13px;line-height:1.8">
+              <li>Trees do NOT shed all leaves at the same time (no distinct leafless period)</li>
+              <li>Multi-layered dense canopy — sunlight barely reaches ground</li>
+              <li>Very diverse species — economically valuable hardwood trees</li>
+              <li>Trees: <strong>Ebony, Mahogany, Rosewood, Rubber, Cinchona</strong></li>
+            </ul>
+          </div>
+          <div>
+            <div class="info-box imp" style="margin:0">Why are they difficult to exploit commercially?<br><br>1. Extremely dense — difficult to access<br>2. No roads/transport<br>3. Huge variety of species — few trees of each kind per acre<br>4. Very hard, heavy timber — difficult to float on rivers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tropical Deciduous -->
+    <div class="accordion">
+      <div class="acc-header" onclick="toggleAcc(this)">🍃 Tropical Deciduous Forests — Most widespread in India <span class="acc-arrow">▼</span></div>
+      <div class="acc-body">
+        <p><strong>Rainfall:</strong> 70–200 cm/year. <strong>Distribution:</strong> ~60% of India's forested area — most widespread type. Found across Peninsular India, foothills of Himalayas, NE India.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px">
+          <div>
+            <h4 style="color:#2E7D32;margin-bottom:8px;font-size:13.5px">🌧️ Moist Deciduous (100–200 cm)</h4>
+            <ul style="padding-left:18px;font-size:13px;line-height:1.8">
+              <li>Teak, Sal, Bamboo, Sandalwood, Shisham</li>
+              <li>Eastern slopes of Western Ghats, NE India, N Odisha, Jharkhand</li>
+              <li>Commercially most important — teak is most valuable</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="color:#558B2F;margin-bottom:8px;font-size:13.5px">☀️ Dry Deciduous (70–100 cm)</h4>
+            <ul style="padding-left:18px;font-size:13px;line-height:1.8">
+              <li>Khair, Tendu, Axle wood, Palas</li>
+              <li>UP, MP, Rajasthan, Central Deccan</li>
+              <li>More open canopy, grass undergrowth</li>
+            </ul>
+          </div>
+        </div>
+        <div class="info-box exam" style="margin-top:12px">Why do deciduous trees shed leaves for 6–8 weeks in March–April? To reduce water loss (transpiration) during the dry summer season. The long dry period triggers leaf fall.</div>
+        <div class="info-box note" style="margin-top:8px">The Nilgiri Hills receive 150–180 cm rainfall → moist deciduous forests dominate there. Trees shed leaves during dry season.</div>
+      </div>
+    </div>
+
+    <!-- Desert -->
+    <div class="accordion">
+      <div class="acc-header" onclick="toggleAcc(this)">🏜️ Tropical Desert / Thorn Forests — Adapted to survive dry conditions <span class="acc-arrow">▼</span></div>
+      <div class="acc-body">
+        <p><strong>Rainfall:</strong> Less than 70 cm/year (some areas < 25 cm). <strong>Distribution:</strong> Rajasthan, parts of Punjab, Haryana, Gujarat — arid and semi-arid regions.</p>
+        <p style="margin-top:10px"><strong>Key trees:</strong> Acacias, Euphorbias, Cacti, Babool, Khejri</p>
+        <p style="margin-top:10px"><strong>Adaptations (Why stunted growth?):</strong></p>
+        <ul style="padding-left:18px;margin-top:4px;font-size:13px;line-height:1.8">
+          <li><strong>Stunted growth</strong> — lack of water and nutrients in soil limits growth</li>
+          <li><strong>Thorns instead of leaves</strong> — to reduce water loss through transpiration</li>
+          <li><strong>Long tap roots</strong> — to reach deep groundwater</li>
+          <li><strong>Thick waxy bark/leaves</strong> — to prevent water evaporation</li>
+          <li>Plants are widely spaced due to competition for water</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Littoral -->
+    <div class="accordion">
+      <div class="acc-header" onclick="toggleAcc(this)">🌊 Littoral / Mangrove Forests — Tidal forests of coastal areas <span class="acc-arrow">▼</span></div>
+      <div class="acc-body">
+        <p><strong>Location:</strong> Along coastal areas, river deltas, estuaries, tidal mudflats. <strong>Major region:</strong> Sundarbans (West Bengal) — world's largest mangrove forest. Also: Andaman & Nicobar, Mahanadi delta, Krishna delta.</p>
+        <p style="margin-top:10px"><strong>Conditions for growth:</strong></p>
+        <ul style="padding-left:18px;margin-top:4px;font-size:13px;line-height:1.8">
+          <li>Tidal influence — regularly flooded by salty or brackish water</li>
+          <li>Trees can survive in both <strong>saline and fresh water</strong></li>
+          <li>Muddy, waterlogged, anaerobic (oxygen-poor) soil</li>
+        </ul>
+        <p style="margin-top:10px"><strong>Features:</strong></p>
+        <ul style="padding-left:18px;margin-top:4px;font-size:13px;line-height:1.8">
+          <li><strong>Pneumatophores (breathing roots)</strong> — roots that grow above soil surface to get oxygen</li>
+          <li>Dense, interlocked root system (protects coast from erosion and cyclones)</li>
+          <li>Trees: <strong>Sundri</strong> (in Sundarbans), Rhizophora, Avicennia, Phoenix palms</li>
+          <li>Excellent breeding ground for fish and shrimp</li>
+        </ul>
+        <div class="info-box exam" style="margin-top:12px">The Sundarbans is famous for the Sundri tree (from which it gets its name) and for being the last stronghold of the Royal Bengal Tiger (Project Tiger).</div>
+      </div>
+    </div>
+
+    <!-- Mountain -->
+    <div class="accordion">
+      <div class="acc-header" onclick="toggleAcc(this)">🏔️ Mountain Vegetation — Changes with altitude <span class="acc-arrow">▼</span></div>
+      <div class="acc-body">
+        <p>As altitude increases → temperature drops → vegetation changes. This is called <strong>altitudinal zonation</strong>.</p>
+        <table class="styled-table" style="margin-top:12px">
+          <thead><tr><th>Altitude</th><th>Type</th><th>Trees/Plants</th></tr></thead>
+          <tbody>
+            <tr><td>Below 1,000 m</td><td>Tropical / Subtropical</td><td>Oak, Chestnuts (in foothills)</td></tr>
+            <tr><td>1,000 – 2,000 m</td><td>Temperate (Broadleaf)</td><td>Oak, Chestnut, Magnolia — in Himalayas and NE India</td></tr>
+            <tr><td>2,000 – 3,000 m</td><td>Temperate Coniferous</td><td>Deodar, Silver fir, Pine, Spruce, Rhododendron</td></tr>
+            <tr><td>3,000 – 4,000 m</td><td>Alpine</td><td>Juniper, Birch, dwarf willows — near snowline</td></tr>
+            <tr><td>Above 4,000 m</td><td>Tundra / Grassland</td><td>Mosses, lichens, alpine grasses only</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Forest Conservation -->
+    <div class="sec-title">🛡 Forest Conservation</div>
+    <div class="cards-grid">
+      <div class="card card-tinted card-border"><span class="card-icon">🌱</span><div class="card-title">Social Forestry</div><div class="card-body">Planting trees on common lands, along roads, and river banks by local communities. Main reason for recent increase in forest cover.</div></div>
+      <div class="card card-tinted card-border"><span class="card-icon">🤝</span><div class="card-title">JFM (Joint Forest Management)</div><div class="card-body">Government and local communities jointly manage forests. Communities get benefits in return for protecting forests.</div></div>
+      <div class="card card-tinted card-border"><span class="card-icon">📜</span><div class="card-title">Legal Protection</div><div class="card-body">Wildlife Protection Act 1972; Forest Conservation Act 1980; National Forest Policy 1988 — aims for 33% forest cover</div></div>
+      <div class="card card-tinted card-border"><span class="card-icon">🐯</span><div class="card-title">Project Tiger & Elephant</div><div class="card-body">Special government projects to protect endangered species. 54 Tiger Reserves across India. Elephant corridors protected.</div></div>
+    </div>
+    <div class="info-box remember">There is a gradual increase in forest cover in India recently — due to promotion of Social Forestry and afforestation drives.</div>
+
+  </div>
+</section>
+
+<!-- ░░░░░░░░░ CHAPTER 7: WATER RESOURCES ░░░░░░░░░ -->
+<section id="ch-water" class="chapter-page ch-water">
+  <div class="chapter-hero" style="background:linear-gradient(135deg,#01579B,#0277BD,#039BE5)">
+    <span class="chapter-emoji">💧</span>
+    <div class="chapter-title">Water Resources</div>
+    <div class="chapter-subtitle">Sources of water, conservation methods, rainwater harvesting and irrigation techniques.</div>
+    <div class="chapter-num">07</div>
+  </div>
+
+  <div class="content-area">
+    <div class="sec-title">🗂 Sources of Water</div>
+    <div class="compare-grid">
+      <div class="compare-block" style="--block-color:#0277BD">
+        <h4>🌊 Surface Water</h4>
+        <ul>
+          <li>Rivers and streams</li>
+          <li>Lakes (Dal Lake, Chilika Lake)</li>
+          <li>Ponds and tanks</li>
+          <li>Reservoirs / Dams</li>
+          <li>Directly visible, easier to access</li>
+          <li>Affected by rainfall patterns</li>
+        </ul>
+      </div>
+      <div class="compare-block" style="--block-color:#006064">
+        <h4>🌿 Ground Water</h4>
+        <ul>
+          <li>Wells (open wells)</li>
+          <li>Tube wells / bore wells</li>
+          <li>Springs</li>
+          <li>Artesian wells (natural pressure)</li>
+          <li>Stored in aquifers underground</li>
+          <li>More reliable but can be overused</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sec-title">🚿 Irrigation — Why India Needs It</div>
+    <div class="cards-grid-3">
+      <div class="card card-tinted card-border"><span class="card-icon">🌦️</span><div class="card-title">Uncertain Monsoon</div><div class="card-body">Rainfall is seasonal and unreliable — irrigation ensures year-round farming</div></div>
+      <div class="card card-tinted card-border"><span class="card-icon">🌾</span><div class="card-title">Multiple Crops</div><div class="card-body">Irrigation allows farmers to grow 2–3 crops per year instead of 1 rain-fed crop</div></div>
+      <div class="card card-tinted card-border"><span class="card-icon">🏜️</span><div class="card-title">Arid Regions</div><div class="card-body">Parts of Rajasthan, Gujarat get very little rain — only irrigation makes farming possible</div></div>
+    </div>
+
+    <!-- Irrigation Types Table -->
+    <div class="sec-title">🌱 Types of Irrigation</div>
+    <table class="styled-table">
+      <thead><tr><th>Type</th><th>How it works</th><th>Best suited for</th><th>Examples / Key States</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Well Irrigation</strong><br><span style="font-size:11.5px;color:#666">(Open wells, Tube wells)</span></td>
+          <td>Water drawn from wells by hand, pump, or motor</td>
+          <td>Areas with high water table; flat plains; alluvial soil</td>
+          <td>Punjab, UP, Haryana — tube wells very popular. <br><em>Tube wells: reliable, dig easily in alluvial areas</em></td>
+        </tr>
+        <tr>
+          <td><strong>Canal Irrigation</strong></td>
+          <td>Canals dug from rivers carry water to fields; perennial or inundation canals</td>
+          <td>Flat plains; perennial rivers; deep rich alluvial soil</td>
+          <td>Punjab, Haryana, UP (Indira Gandhi Canal in Rajasthan)</td>
+        </tr>
+        <tr>
+          <td><strong>Tank Irrigation</strong></td>
+          <td>Rain water collected in artificial reservoirs (tanks); released as needed</td>
+          <td>Deccan Plateau — rocky terrain, non-perennial rivers, can't dig canals/wells easily</td>
+          <td>Tamil Nadu, Karnataka, Andhra Pradesh</td>
+        </tr>
+        <tr>
+          <td><strong>Drip Irrigation</strong></td>
+          <td>Water delivered directly to roots through tiny holes in pipes</td>
+          <td>Water-scarce areas; expensive crops; horticulture</td>
+          <td>Gaining popularity — saves 30–50% water vs traditional methods</td>
+        </tr>
+        <tr>
+          <td><strong>Sprinkler Irrigation</strong></td>
+          <td>Water sprayed like rain through rotating sprinklers</td>
+          <td>Uneven terrain; sandy soil; cash crops</td>
+          <td>Used in orchards, lawns, sugarcane fields</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="info-box exam">Why is South India (like Tamil Nadu) not suitable for canal irrigation? Rivers of S India are non-perennial (seasonal) and the Deccan plateau is rocky — canals can't be dug and rivers don't flow year-round to supply water.</div>
+    <div class="info-box exam">Why are modern methods of irrigation (drip/sprinkler) gaining popularity? 1. Fertilizer/nutrient loss is minimized. 2. Water loss (through evaporation and seepage) is minimum. 3. More efficient use of limited water resources.</div>
+
+    <div class="sec-title">☔ Rainwater Harvesting</div>
+    <div class="compare-grid">
+      <div class="compare-block" style="--block-color:#0277BD">
+        <h4>🏠 Rooftop Rainwater Harvesting</h4>
+        <ul>
+          <li>Rainwater collected from rooftop of buildings</li>
+          <li>Passed through filters (sand, gravel)</li>
+          <li>Stored in underground tank or used to recharge ground water</li>
+          <li>Common in urban areas — Chennai mandates it</li>
+        </ul>
+      </div>
+      <div class="compare-block" style="--block-color:#006064">
+        <h4>🌿 Surface Runoff Harvesting</h4>
+        <ul>
+          <li>Rain collected from ground surfaces, roads, fields</li>
+          <li>Directed into ponds, check dams, percolation pits</li>
+          <li>Recharges groundwater table</li>
+          <li>Traditional methods: Johad (Rajasthan), Bamboo drip irrigation (Meghalaya)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sec-title">🏆 Importance of Rainwater Harvesting</div>
+    <div class="pills">
+      <span class="pill">Reduces dependence on piped water</span>
+      <span class="pill">Recharges depleting groundwater</span>
+      <span class="pill">Reduces flooding in urban areas</span>
+      <span class="pill">Low cost, low tech solution</span>
+      <span class="pill">Reduces water bills</span>
+      <span class="pill">Prevents soil erosion (slows runoff)</span>
+    </div>
+
+    <div class="sec-title">🌊 Conservation of Water</div>
+    <div class="cards-grid">
+      <div class="card card-tinted card-border"><span class="card-icon">🚰</span><div class="card-title">Efficient Use</div><div class="card-body">Drip and sprinkler irrigation; fixing leakages; using water-efficient appliances</div></div>
+      <div class="card card-tinted card-border"><span class="card-icon">🌳</span><div class="card-title">Afforestation</div><div class="card-body">Forests increase groundwater recharge; reduce evaporation; maintain water cycle</div></div>
+      <div class="card card-tinted card-border"><span class="card-icon">🏞️</span><div class="card-title">Watershed Management</div><div class="card-body">Treating entire watershed (river catchment area) to conserve water and land together</div></div>
+      <div class="card card-tinted card-border"><span class="card-icon">⚠️</span><div class="card-title">Prevent Pollution</div><div class="card-body">Industrial waste, sewage treated before releasing into rivers; strict laws needed</div></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ░░░░░░░░░ CHAPTER 8: MINERALS & ENERGY ░░░░░░░░░ -->
+<section id="ch-mineral" class="chapter-page ch-mineral">
+  <div class="chapter-hero" style="background:linear-gradient(135deg,#BF360C,#D84315,#FF7043)">
+    <span class="chapter-emoji">⛏️</span>
+    <div class="chapter-title">Minerals &amp; Energy Resources</div>
+    <div class="chapter-subtitle">Metallic minerals, conventional and non-conventional energy — locations, uses, advantages and disadvantages.</div>
+    <div class="chapter-num">08</div>
+  </div>
+
+  <div class="content-area">
+
+    <div class="sec-title">💎 Metallic Minerals</div>
+    <table class="styled-table">
+      <thead><tr><th>Mineral</th><th>Key Uses</th><th>Types/Best Quality</th><th>Distribution (States)</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Iron Ore</strong></td>
+          <td>Steel manufacturing, construction, machinery</td>
+          <td><strong>Magnetite</strong> (best, 72% iron); <strong>Hematite</strong> (60–65%, most used commercially)</td>
+          <td>Jharkhand (Singhbhum), Odisha (Keonjhar), Chhattisgarh (Bailadila), Karnataka (Kudremukh), Goa</td>
+        </tr>
+        <tr>
+          <td><strong>Manganese</strong></td>
+          <td>Steel manufacturing (improves hardness), batteries, fertilizers, bleaching powder</td>
+          <td>—</td>
+          <td>Odisha (largest), Maharashtra (Nagpur), Karnataka, Goa, MP (Balaghat ⭐)</td>
+        </tr>
+        <tr>
+          <td><strong>Copper</strong></td>
+          <td>Electric wires (good conductor ⭐), coins, utensils, alloys (brass, bronze)</td>
+          <td>—</td>
+          <td>Rajasthan (Khetri — largest), Jharkhand (Singhbhum), MP (Balaghat)</td>
+        </tr>
+        <tr>
+          <td><strong>Bauxite</strong></td>
+          <td>Aluminium production (raw material), fire-resistant bricks, chemicals</td>
+          <td>—</td>
+          <td>Jharkhand (Ranchi), Odisha, Gujarat, Maharashtra, MP, Rajasthan</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="info-box exam">Why is copper used for making electric wires? Copper is an excellent conductor of electricity, ductile (can be drawn into thin wires), and doesn't corrode easily.</div>
+
+    <div class="sec-title">🔥 Conventional Energy Resources</div>
+
+    <div class="accordion">
+      <div class="acc-header" onclick="toggleAcc(this)">🪨 Coal — India's most abundant fossil fuel <span class="acc-arrow">▼</span></div>
+      <div class="acc-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div>
+            <p><strong>Types (best to worst quality):</strong></p>
+            <ul style="padding-left:18px;margin-top:4px;font-size:13px;line-height:1.8">
+              <li><strong>Anthracite:</strong> 90%+ carbon, best quality, hard — J&K</li>
+              <li><strong>Bituminous:</strong> 60–80% carbon, most widely used, coking coal — Jharkhand, WB</li>
+              <li><strong>Lignite:</strong> lowest quality, brown coal — Tamil Nadu (Neyveli)</li>
+            </ul>
+            <p style="margin-top:10px"><strong>Distribution:</strong></p>
+            <ul style="padding-left:18px;margin-top:4px;font-size:13px;line-height:1.8">
+              <li>Jharia (Jharkhand) — largest coalfield in India</li>
+              <li>Raniganj (WB) — oldest coalfield</li>
+              <li>Bokaro, Giridih, Karanpura — Jharkhand</li>
+              <li>Singrauli, Satpura — MP</li>
+            </ul>
+          </div>
+          <div>
+            <div class="compare-block" style="--block-color:#D32F2F;border:1px solid #f0f0f0;border-top:4px solid #D32F2F">
+              <h4>⚠️ Disadvantages</h4>
+              <ul>
+                <li>Non-renewable, limited reserves</li>
+                <li>Burning releases CO₂, SO₂ → air pollution, acid rain</li>
+                <li>Mining causes land degradation and subsidence</li>
+                <li>Contributes to greenhouse effect and climate change</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="acc-header" onclick="toggleAcc(this)">🛢️ Petroleum — "Liquid Gold" <span class="acc-arrow">▼</span></div>
+      <div class="acc-body">
+        <p><strong>Why called "Liquid Gold"?</strong> Due to its extremely high economic value as an energy source AND as raw material for a huge number of industries (petrochemicals, plastics, pharmaceuticals, fertilizers).</p>
+        <p style="margin-top:10px"><strong>Distribution:</strong></p>
+        <ul style="padding-left:18px;margin-top:4px;font-size:13px;line-height:1.8">
+          <li><strong>Mumbai High</strong> — largest offshore oil field (70% of India's production)</li>
+          <li><strong>Digboi (Assam)</strong> — oldest oil field in India</li>
+          <li>Gujarat (Ankeleshwar, Kalol, Mehsana)</li>
+          <li>Rajasthan (Barmer — Mangala field, newer discovery)</li>
+        </ul>
+        <div class="info-box exam" style="margin-top:12px">Disadvantages of petroleum: Non-renewable; burning releases CO₂ and other pollutants; oil spills harm marine life; price is volatile and India imports large amounts.</div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="acc-header" onclick="toggleAcc(this)">💨 Natural Gas — Cleaner fossil fuel <span class="acc-arrow">▼</span></div>
+      <div class="acc-body">
+        <p>Found alongside petroleum fields — Mumbai High, Hazira (Gujarat), Andhra Pradesh (Krishna-Godavari basin), Tripura.</p>
+        <p style="margin-top:8px"><strong>Advantages over coal/petroleum:</strong> Burns more cleanly; lower CO₂ emissions; transported via pipelines; used in homes (CNG, LPG) and industries.</p>
+        <p style="margin-top:8px"><strong>HBJ Pipeline</strong> — Hazira–Bijaipur–Jagdishpur (longest gas pipeline in India).</p>
+      </div>
+    </div>
+
+    <!-- Hydel Power -->
+    <div class="sec-title">⚡ Hydel (Hydroelectric) Power <span class="badge badge-imp">⭐ Must Know Dams</span></div>
+    <div class="compare-grid">
+      <div class="compare-block" style="--block-color:#0277BD">
+        <h4>🏗️ Bhakra Nangal Dam</h4>
+        <ul>
+          <li>River: <strong>Sutlej</strong></li>
+          <li>States: Punjab–Himachal Pradesh border</li>
+          <li>Largest multi-purpose river valley project in India</li>
+          <li>Bhakra dam is one of the tallest gravity dams in Asia</li>
+          <li>Creates Gobind Sagar Reservoir</li>
+          <li>Benefits: Power + Irrigation for Punjab, Haryana, Rajasthan</li>
+        </ul>
+      </div>
+      <div class="compare-block" style="--block-color:#00695C">
+        <h4>🏗️ Hirakud Dam</h4>
+        <ul>
+          <li>River: <strong>Mahanadi</strong></li>
+          <li>State: Odisha (near Sambalpur)</li>
+          <li>Longest dam in the world (25.8 km including earthen dikes)</li>
+          <li>Controls flooding of Mahanadi delta</li>
+          <li>Benefits: Power for Odisha mines and industries; irrigation</li>
+          <li>Provides power to exploitation units in Odisha ⭐</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Non-conventional Energy -->
+    <div class="sec-title">🌱 Non-Conventional Energy Sources</div>
+    <div class="energy-grid">
+      <div class="energy-card" style="--e-color:#F9A825">
+        <h4>☀️ Solar Energy</h4>
+        <p><strong>Best states:</strong> Rajasthan, Gujarat (highest sunshine hours)<br><strong>Generation:</strong> Photovoltaic (PV) cells convert sunlight to electricity<br><strong>Advantages:</strong> Inexhaustible, no pollution, no fuel cost, ideal for remote areas</p>
+      </div>
+      <div class="energy-card" style="--e-color:#1565C0">
+        <h4>💨 Wind Energy</h4>
+        <p><strong>Best states:</strong> Tamil Nadu (Muppandal), Gujarat (Jaisalmer), Rajasthan, Maharashtra<br><strong>Generation:</strong> Wind turbines spin to generate electricity<br><strong>Advantages:</strong> Clean, renewable, can be combined with farming</p>
+      </div>
+      <div class="energy-card" style="--e-color:#00838F">
+        <h4>🌊 Tidal Energy</h4>
+        <p><strong>Best locations:</strong> Gulf of Khambhat, Gulf of Kutch (Gujarat), Sundarbans (WB)<br><strong>Generation:</strong> Tidal water movement spins turbines<br><strong>Advantages:</strong> Predictable, no fuel needed, no emissions</p>
+      </div>
+      <div class="energy-card" style="--e-color:#AD1457">
+        <h4>🌋 Geothermal Energy</h4>
+        <p><strong>Best locations:</strong> Parvati Valley, Tattapani (Himachal Pradesh), Puga valley (J&K)<br><strong>Generation:</strong> Steam from earth's interior drives turbines<br><strong>Advantages:</strong> Constant supply, clean, no fuel cost</p>
+      </div>
+      <div class="energy-card" style="--e-color:#4527A0">
+        <h4>⚛️ Nuclear Energy</h4>
+        <p><strong>Fuel:</strong> Uranium, Thorium<br><strong>Plants:</strong> Tarapur (Maharashtra — 1st), Rana Pratap Sagar (Rajasthan), Kalpakkam (TN), Narora (UP)<br><strong>Advantages:</strong> High power output, no air pollution during operation</p>
+      </div>
+      <div class="energy-card" style="--e-color:#33691E">
+        <h4>🐄 Biogas</h4>
+        <p><strong>Source:</strong> Decomposition of organic waste (cattle dung, crop waste, kitchen waste)<br><strong>Generation:</strong> Methane gas produced by anaerobic bacteria → burns to generate energy<br><strong>Advantages:</strong> Uses waste, no pollution, cheap, slurry used as fertilizer</p>
+      </div>
+    </div>
+
+    <div class="info-box remember">Why is India ideal for solar power? India is a tropical country — most parts have 300+ sunny days per year. Especially Rajasthan has maximum sunshine hours.</div>
+
+  </div>
+</section>
+
+<!-- ░░░░░░░░░ CHAPTER 9: AGRICULTURE ░░░░░░░░░ -->
+<section id="ch-agriculture" class="chapter-page ch-agri">
+  <div class="chapter-hero" style="background:linear-gradient(135deg,#33691E,#558B2F,#7CB342)">
+    <span class="chapter-emoji">🌾</span>
+    <div class="chapter-title">Agriculture</div>
+    <div class="chapter-subtitle">Farming types, cropping seasons, and detailed notes on all major crops — rice to coffee.</div>
+    <div class="chapter-num">09</div>
+  </div>
+
+  <div class="content-area">
+
+    <div class="sec-title">🌍 Importance of Agriculture</div>
+    <div class="pills">
+      <span class="pill">~50% of population employed in agriculture</span>
+      <span class="pill">Contributes ~18% to GDP</span>
+      <span class="pill">Raw material for industries (cotton, jute, sugar)</span>
+      <span class="pill">Earns foreign exchange through exports</span>
+      <span class="pill">Food security for 1.4 billion people</span>
+    </div>
+
+    <div class="sec-title">⚠️ Problems & Reforms</div>
+    <div class="compare-grid">
+      <div class="compare-block" style="--block-color:#BF360C">
+        <h4>Problems</h4>
+        <ul>
+          <li>Small and fragmented land holdings</li>
+          <li>Dependence on uncertain monsoon</li>
+          <li>Lack of irrigation in most areas</li>
+          <li>Low use of technology and HYV seeds</li>
+          <li>Inadequate credit and market access</li>
+          <li>Soil degradation and erosion</li>
+        </ul>
+      </div>
+      <div class="compare-block" style="--block-color:#2E7D32">
+        <h4>Reforms / Solutions</h4>
+        <ul>
+          <li>Green Revolution — HYV seeds, fertilizers, irrigation</li>
+          <li>NABARD — agricultural credit and finance</li>
+          <li>Land reforms — consolidation of holdings</li>
+          <li>PM Fasal Bima Yojana — crop insurance</li>
+          <li>Multipurpose projects for irrigation</li>
+          <li>Agricultural universities and research</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sec-title">🚜 Types of Farming</div>
+    <table class="styled-table">
+      <thead><tr><th>Type</th><th>Description</th><th>Where / Example</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Subsistence</strong></td><td>Farming for self-consumption, not for sale. Small scale.</td><td>Most of rural India</td></tr>
+        <tr><td><strong>Commercial</strong></td><td>Large scale farming for market sale; profit-oriented</td><td>Plantation crops, Punjab wheat</td></tr>
+        <tr><td><strong>Shifting (Jhum)</strong></td><td>Forest cleared, crops grown for 2–3 years, then moved to new plot. Causes soil erosion.</td><td>NE India (Assam, Nagaland, Mizoram)</td></tr>
+        <tr><td><strong>Intensive</strong></td><td>High output from small land using heavy inputs (labour, fertilizer, irrigation)</td><td>Rice farming in Punjab, river deltas</td></tr>
+        <tr><td><strong>Extensive</strong></td><td>Large farms, less labour per hectare, mechanized. Lower yield per hectare but large scale.</td><td>Wheat farming in Punjab (after Green Revolution)</td></tr>
+        <tr><td><strong>Plantation</strong></td><td>Single crop grown on large area; scientific methods; for export</td><td>Tea (Assam), Coffee (Karnataka), Rubber (Kerala)</td></tr>
+        <tr><td><strong>Mixed Farming</strong></td><td>Crops AND livestock raised together on same farm</td><td>Common in N India — <em>gives security to farmers since if crops fail, livestock income helps</em> ⭐</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sec-title">📅 Agricultural Seasons</div>
+    <table class="styled-table">
+      <thead><tr><th>Season</th><th>Sowing Time</th><th>Harvest Time</th><th>Major Crops</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Kharif <span class="tag tag-k">K</span></strong></td><td>June–July (with SW Monsoon)</td><td>September–October</td><td>Rice, cotton, jute, sugarcane, millets (jowar, bajra), groundnut, soyabean</td></tr>
+        <tr><td><strong>Rabi <span class="tag tag-r">R</span></strong></td><td>October–November</td><td>March–April</td><td>Wheat, mustard, barley, peas, gram (chickpea)</td></tr>
+        <tr><td><strong>Zayad <span class="tag tag-z">Z</span></strong></td><td>April–June (between rabi and kharif)</td><td>July</td><td>Watermelon, cucumber, moong, some vegetables</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Crop Cards -->
+    <div class="sec-title">🌱 Major Crops — Click to Expand <span class="badge badge-imp">⭐ High Priority</span></div>
+
+    <!-- Rice -->
+    <div class="crop-card">
+      <div class="crop-header" onclick="toggleCrop(this)">
+        <div class="crop-name">🌾 Rice <span class="crop-season-badge tag-k" style="background:#FFF3CD;color:#856404">Kharif</span></div>
+        <span style="font-size:12px;color:#888">Click to expand ▼</span>
+      </div>
+      <div class="crop-body">
+        <div class="crop-grid">
+          <div class="crop-fact"><div class="crop-fact-label">Temperature</div><div class="crop-fact-value">21–27°C (warm & humid)</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Rainfall</div><div class="crop-fact-value">150–200 cm OR irrigation</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Soil</div><div class="crop-fact-value">Alluvial or clayey (water retention)</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Leading States</div><div class="crop-fact-value">WB, UP, AP, Punjab, Odisha</div></div>
+        </div>
+        <p style="font-size:13px;color:#374151"><strong>Method:</strong> Transplanting (seedlings grown separately, then planted in flooded paddies). In hilly areas, terrace farming is used. Punjab uses HYV seeds and intensive irrigation.</p>
+      </div>
+    </div>
+
+    <!-- Wheat -->
+    <div class="crop-card">
+      <div class="crop-header" onclick="toggleCrop(this)">
+        <div class="crop-name">🌿 Wheat <span class="crop-season-badge tag-r" style="background:#E3F2FD;color:#1565C0">Rabi</span></div>
+        <span style="font-size:12px;color:#888">Click to expand ▼</span>
+      </div>
+      <div class="crop-body">
+        <div class="crop-grid">
+          <div class="crop-fact"><div class="crop-fact-label">Temperature</div><div class="crop-fact-value">Sown: 10–15°C; Harvest: warm</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Rainfall</div><div class="crop-fact-value">50–75 cm; winter rains needed</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Soil</div><div class="crop-fact-value">Well-drained loamy or clay loam</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Leading States</div><div class="crop-fact-value">UP, Punjab, Haryana, MP, Rajasthan</div></div>
+        </div>
+        <p style="font-size:13px;color:#374151"><strong>Why confined to N India?</strong> Wheat is a temperate crop needing cool winters (10–15°C) for germination and warm dry weather at harvest. This is available only in N India. South India is too hot.</p>
+        <div class="info-box exam" style="margin-top:10px">Wheat cultivation is confined to northern India because it requires cool temperature (10–15°C) during sowing. Southern India is too warm even in winter.</div>
+      </div>
+    </div>
+
+    <!-- Millets -->
+    <div class="crop-card">
+      <div class="crop-header" onclick="toggleCrop(this)">
+        <div class="crop-name">🌻 Millets (Jowar, Bajra, Ragi) <span class="crop-season-badge tag-k" style="background:#FFF3CD;color:#856404">Kharif</span></div>
+        <span style="font-size:12px;color:#888">Click to expand ▼</span>
+      </div>
+      <div class="crop-body">
+        <div class="crop-grid">
+          <div class="crop-fact"><div class="crop-fact-label">Temperature</div><div class="crop-fact-value">25–32°C</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Rainfall</div><div class="crop-fact-value">40–60 cm (drought resistant!)</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Soil</div><div class="crop-fact-value">Red, sandy, poor soil — tolerates low fertility</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Leading States</div><div class="crop-fact-value">Maharashtra (jowar), Rajasthan (bajra), Karnataka (ragi)</div></div>
+        </div>
+        <p style="font-size:13px;color:#374151"><strong>Key feature:</strong> Millets are called "coarse grains" and are drought-resistant — grown in areas with low rainfall and poor soil. They are food crops for millions of poor people.</p>
+      </div>
+    </div>
+
+    <!-- Sugarcane -->
+    <div class="crop-card">
+      <div class="crop-header" onclick="toggleCrop(this)">
+        <div class="crop-name">🍬 Sugarcane <span class="crop-season-badge tag-k" style="background:#FFF3CD;color:#856404">Kharif</span></div>
+        <span style="font-size:12px;color:#888">Click to expand ▼</span>
+      </div>
+      <div class="crop-body">
+        <div class="crop-grid">
+          <div class="crop-fact"><div class="crop-fact-label">Temperature</div><div class="crop-fact-value">21–27°C (hot and humid)</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Rainfall</div><div class="crop-fact-value">100–150 cm; dry weather at harvest</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Soil</div><div class="crop-fact-value">Deep rich loamy or alluvial</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Leading States</div><div class="crop-fact-value">UP (largest), Maharashtra, TN, Karnataka</div></div>
+        </div>
+        <p style="font-size:13px;color:#374151"><strong>Ratoon Cropping:</strong> After harvesting sugarcane, the same roots are left to produce the next crop. Ratoon matures earlier and costs less to grow — hence popular. ⭐</p>
+        <div class="info-box exam" style="margin-top:10px">Sugar factories must be near cane fields because sucrose content starts decreasing within 24 hours of harvesting — quick crushing is essential.</div>
+      </div>
+    </div>
+
+    <!-- Cotton -->
+    <div class="crop-card">
+      <div class="crop-header" onclick="toggleCrop(this)">
+        <div class="crop-name">🌸 Cotton — "White Gold" <span class="crop-season-badge tag-k" style="background:#FFF3CD;color:#856404">Kharif</span></div>
+        <span style="font-size:12px;color:#888">Click to expand ▼</span>
+      </div>
+      <div class="crop-body">
+        <div class="crop-grid">
+          <div class="crop-fact"><div class="crop-fact-label">Temperature</div><div class="crop-fact-value">21–30°C; needs frost-free period</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Rainfall</div><div class="crop-fact-value">50–100 cm; dry at harvest!</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Soil</div><div class="crop-fact-value">Black (Regur) soil — ideal</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Leading States</div><div class="crop-fact-value">Gujarat (largest), Maharashtra, Telangana, Punjab</div></div>
+        </div>
+        <p style="font-size:13px;color:#374151"><strong>Why black soil for cotton?</strong> Black soil retains moisture well, supplies water during dry periods, and provides needed minerals. Cotton also needs dry weather during boll opening — black soil's moisture retention helps even without rain.</p>
+        <p style="margin-top:8px;font-size:13px;color:#374151"><strong>Sowing:</strong> Punjab/Haryana — April–May; Tamil Nadu — both Kharif and Rabi seasons</p>
+      </div>
+    </div>
+
+    <!-- Jute -->
+    <div class="crop-card">
+      <div class="crop-header" onclick="toggleCrop(this)">
+        <div class="crop-name">🟡 Jute — "Golden Fibre" <span class="crop-season-badge tag-k" style="background:#FFF3CD;color:#856404">Kharif</span></div>
+        <span style="font-size:12px;color:#888">Click to expand ▼</span>
+      </div>
+      <div class="crop-body">
+        <div class="crop-grid">
+          <div class="crop-fact"><div class="crop-fact-label">Temperature</div><div class="crop-fact-value">25–35°C; hot and humid</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Rainfall</div><div class="crop-fact-value">150–200 cm; flooding tolerated</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Soil</div><div class="crop-fact-value">Alluvial, river deltas, fresh river floods</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Leading States</div><div class="crop-fact-value">West Bengal (80%), Bihar, Assam</div></div>
+        </div>
+        <p style="font-size:13px;color:#374151"><strong>Processing (Retting):</strong> Jute stalks soaked in water for 10–30 days → fibres separated → dried → baled → sent to mills. Jute mills concentrated near Kolkata (Hooghly river belt).</p>
+      </div>
+    </div>
+
+    <!-- Tea -->
+    <div class="crop-card">
+      <div class="crop-header" onclick="toggleCrop(this)">
+        <div class="crop-name">☕ Tea — Plantation Crop</div>
+        <span style="font-size:12px;color:#888">Click to expand ▼</span>
+      </div>
+      <div class="crop-body">
+        <div class="crop-grid">
+          <div class="crop-fact"><div class="crop-fact-label">Temperature</div><div class="crop-fact-value">20–30°C; no frost</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Rainfall</div><div class="crop-fact-value">150–300 cm; well distributed</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Soil</div><div class="crop-fact-value">Well-drained acidic loamy, hill slopes (no waterlogging)</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Leading States</div><div class="crop-fact-value">Assam (largest), WB (Darjeeling), TN, Kerala</div></div>
+        </div>
+        <p style="font-size:13px;color:#374151"><strong>Processing:</strong> Plucking → Withering (spread out) → Rolling → Fermentation (oxidation) → Drying (firing) → Grading → Packaging</p>
+        <p style="margin-top:8px;font-size:13px;color:#374151"><strong>Why grown on hill slopes?</strong> Tea needs well-drained soil — waterlogging damages roots. Hill slopes ensure good drainage. Mist and humidity of hills also improve flavour.</p>
+      </div>
+    </div>
+
+    <!-- Coffee -->
+    <div class="crop-card">
+      <div class="crop-header" onclick="toggleCrop(this)">
+        <div class="crop-name">☕ Coffee — Plantation Crop</div>
+        <span style="font-size:12px;color:#888">Click to expand ▼</span>
+      </div>
+      <div class="crop-body">
+        <div class="crop-grid">
+          <div class="crop-fact"><div class="crop-fact-label">Temperature</div><div class="crop-fact-value">15–28°C; cool climate preferred</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Rainfall</div><div class="crop-fact-value">150–250 cm; dry period during ripening</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Soil</div><div class="crop-fact-value">Rich loamy, well-drained, slightly acidic, hill slopes</div></div>
+          <div class="crop-fact"><div class="crop-fact-label">Leading States</div><div class="crop-fact-value">Karnataka (70%!), Kerala, Tamil Nadu</div></div>
+        </div>
+        <p style="font-size:13px;color:#374151"><strong>Types:</strong> <strong>Arabica</strong> — better quality, delicate flavour, grown at higher altitudes. <strong>Robusta</strong> — stronger, disease resistant, higher yield.</p>
+        <p style="margin-top:6px;font-size:13px;color:#374151">Needs <strong>shade</strong> — grown under taller shade trees. Processing: Picking → Pulping → Fermentation → Washing → Drying → Milling → Roasting</p>
+      </div>
+    </div>
+
+    <!-- Oilseeds -->
+    <div class="crop-card">
+      <div class="crop-header" onclick="toggleCrop(this)">
+        <div class="crop-name">🌻 Oilseeds (Groundnut, Mustard, Soyabean)</div>
+        <span style="font-size:12px;color:#888">Click to expand ▼</span>
+      </div>
+      <div class="crop-body">
+        <table class="styled-table">
+          <thead><tr><th>Oilseed</th><th>Season</th><th>Soil</th><th>Leading State</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Groundnut</strong></td><td><span class="tag tag-k">Kharif</span></td><td>Well-drained sandy / red loamy</td><td>Gujarat (largest), AP, Tamil Nadu</td></tr>
+            <tr><td><strong>Mustard</strong></td><td><span class="tag tag-r">Rabi</span></td><td>Sandy loam; cool climate</td><td>Rajasthan, UP, MP, Haryana</td></tr>
+            <tr><td><strong>Soyabean</strong></td><td><span class="tag tag-k">Kharif</span></td><td>Well-drained, moderate rainfall</td><td>Madhya Pradesh (largest), Maharashtra</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ░░░░░░░░░ CHAPTER 10: MANUFACTURING INDUSTRIES ░░░░░░░░░ -->
+<section id="ch-industry" class="chapter-page ch-industry">
+  <div class="chapter-hero" style="background:linear-gradient(135deg,#263238,#37474F,#546E7A)">
+    <span class="chapter-emoji">🏭</span>
+    <div class="chapter-title">Manufacturing Industries</div>
+    <div class="chapter-subtitle">Agro-based and mineral-based industries — locations, raw materials, and why they are where they are.</div>
+    <div class="chapter-num">10</div>
+  </div>
+
+  <div class="content-area">
+
+    <div class="sec-title">🍬 Sugar Industry — Agro-Based</div>
+    <div class="compare-grid">
+      <div class="compare-block" style="--block-color:#E65100">
+        <h4>🌾 North India (UP, Bihar)</h4>
+        <ul>
+          <li>UP = largest producer by number of mills</li>
+          <li>Long growing season for cane but lower sucrose content</li>
+          <li>Cooler climate → lower sucrose extraction</li>
+          <li>Crushing season shorter (Nov–April)</li>
+          <li>Old machinery in many mills</li>
+        </ul>
+      </div>
+      <div class="compare-block" style="--block-color:#1B5E20">
+        <h4>🌿 South India (Maharashtra, Karnataka, TN)</h4>
+        <ul>
+          <li>Higher sucrose content in cane</li>
+          <li>Warmer climate → better sugar extraction</li>
+          <li>Longer crushing season (Nov–May)</li>
+          <li>More efficient, modern cooperative mills</li>
+          <li>Maharashtra now leads in actual sugar production</li>
+        </ul>
+      </div>
+    </div>
+    <div class="info-box imp">Sugar factories must be near sugarcane fields because sucrose content drops within 24 hours of harvesting. By-products: Bagasse (→ paper, fuel), Molasses (→ alcohol, yeast), Press mud (→ fertilizer).</div>
+
+    <!-- Cotton Textile -->
+    <div class="sec-title">🧵 Cotton Textile Industry</div>
+    <table class="styled-table">
+      <thead><tr><th>Centre</th><th>Why located here?</th><th>Nickname</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Ahmedabad</strong> (Gujarat)</td><td>Near cotton belt (Gujarat), humid climate (reduces yarn breakage), availability of labour and capital</td><td>"Manchester of India" ⭐</td></tr>
+        <tr><td><strong>Mumbai</strong> (Maharashtra)</td><td>Port (export), humid climate, capital availability, large market. Decline now due to mill closures.</td><td>"Cottonopolis of East" (historically)</td></tr>
+        <tr><td><strong>Coimbatore</strong> (Tamil Nadu)</td><td>Nearby cotton growing areas, hydroelectric power from W Ghats, skilled labour</td><td>"Manchester of S India"</td></tr>
+        <tr><td>Surat, Ludhiana, Kanpur</td><td>Raw material access, labour, power</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <div class="info-box note">Problems of cotton textile industry: Old machinery, power shortage, competition from synthetic fibres, cheap imports.</div>
+
+    <!-- Silk -->
+    <div class="sec-title">🐛 Silk Textile Industry</div>
+    <div class="cards-grid-3">
+      <div class="card card-tinted card-border"><span class="card-icon">🐛</span><div class="card-title">Karnataka — Silk Hub ⭐</div><div class="card-body">Favourable climate for rearing silkworms; Kolar, Mysore are major silk centres. Karnataka produces ~70% of India's silk.</div></div>
+      <div class="card card-tinted card-border"><span class="card-icon">🏛️</span><div class="card-title">Other Centres</div><div class="card-body">Varanasi (Banarasi silk), West Bengal (Murshidabad), Assam (Muga silk — golden silk, unique to Assam)</div></div>
+      <div class="card card-tinted card-border"><span class="card-icon">⚙️</span><div class="card-title">Process (Sericulture)</div><div class="card-body">Mulberry cultivation → Silkworm rearing → Cocoon harvesting → Reeling → Spinning → Weaving → Dyeing</div></div>
+    </div>
+
+    <!-- Iron & Steel -->
+    <div class="sec-title">⚙️ Iron &amp; Steel Industry <span class="badge badge-imp">⭐ All 4 plants asked in every paper</span></div>
+    <table class="styled-table">
+      <thead><tr><th>Plant</th><th>Location</th><th>Established</th><th>Collaboration</th><th>Iron Ore Source</th></tr></thead>
+      <tbody>
+        <tr><td><strong>TISCO</strong> (Tata)</td><td>Jamshedpur, Jharkhand</td><td>1907 (oldest, private)</td><td>Private (Tata group)</td><td>Singhbhum, Jharkhand</td></tr>
+        <tr><td><strong>Bhilai Steel</strong></td><td>Durg, Chhattisgarh</td><td>1959</td><td>Russian (Soviet)</td><td>Bailadila, Chhattisgarh ⭐</td></tr>
+        <tr><td><strong>Rourkela Steel</strong></td><td>Sundargarh, Odisha</td><td>1959</td><td>German (West)</td><td>Keonjhar / Sundargarh</td></tr>
+        <tr><td><strong>VISL / Vizag Steel</strong></td><td>Vishakhapatnam, AP</td><td>1971 (plant); 1992 (production)</td><td>Soviet (USSR)</td><td>Bailadila, Chhattisgarh (by rail)</td></tr>
+        <tr><td><strong>Durgapur Steel</strong></td><td>West Bengal</td><td>1959</td><td>British</td><td>Singhbhum / Odisha</td></tr>
+      </tbody>
+    </table>
+    <div class="info-box remember">Vishakhapatnam (Vizag) Steel Plant is the only coastal steel plant in India — it can import/export materials by sea. Bhilai gets iron ore from Bailadila (Durg district, Chhattisgarh). ⭐</div>
+
+    <!-- Petrochemical & Electronics -->
+    <div class="sec-title">💻 Petrochemical &amp; Electronics</div>
+    <div class="compare-grid">
+      <div class="compare-block" style="--block-color:#37474F">
+        <h4>🛢️ Petrochemical Industries</h4>
+        <ul>
+          <li>Based on petroleum/natural gas as raw material</li>
+          <li>Products: Plastics, synthetic fibres, fertilizers, drugs, detergents</li>
+          <li>Located near oil refineries — Mumbai, Vadodara, Chennai, Jamnagar</li>
+          <li>Why near refineries? They get raw materials (naphtha, ethylene) directly</li>
+        </ul>
+      </div>
+      <div class="compare-block" style="--block-color:#1565C0">
+        <h4>💻 Electronics Industry</h4>
+        <ul>
+          <li>Bengaluru = "Silicon Valley of India" ⭐</li>
+          <li>Products: Computers, mobile phones, defense electronics, software</li>
+          <li>Other centres: Noida (UP), Hyderabad, Chennai, Pune</li>
+          <li>Reasons for Bengaluru: Skilled IT workforce, pleasant climate, good infrastructure, IISc and IITs nearby</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ░░░░░░░░░ CHAPTER 11: TRANSPORT ░░░░░░░░░ -->
+<section id="ch-transport" class="chapter-page ch-transport">
+  <div class="chapter-hero" style="background:linear-gradient(135deg,#E65100,#F4511E,#FF7043)">
+    <span class="chapter-emoji">🚆</span>
+    <div class="chapter-title">Transport</div>
+    <div class="chapter-subtitle">Roadways, Railways, Airways, Waterways — advantages, disadvantages, and why each matters.</div>
+    <div class="chapter-num">11</div>
+  </div>
+
+  <div class="content-area">
+
+    <div class="sec-title">🚗 Why Transport Matters</div>
+    <div class="pills">
+      <span class="pill">Links producers to consumers</span>
+      <span class="pill">Helps industrial expansion</span>
+      <span class="pill">Enables national integration</span>
+      <span class="pill">Aids in disaster relief</span>
+      <span class="pill">Develops remote areas</span>
+    </div>
+
+    <!-- Comparison Table -->
+    <div class="sec-title">⚖️ Modes of Transport — Full Comparison <span class="badge badge-imp">⭐ Core Table</span></div>
+    <table class="styled-table">
+      <thead><tr><th>Mode</th><th>Advantages</th><th>Disadvantages</th><th>Key Facts</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>🚗 Roadways</strong></td>
+          <td>
+            • Door-to-door delivery<br>
+            • Low setup cost vs rail<br>
+            • Can reach anywhere — villages, hills, remote areas<br>
+            • Suitable for perishable goods (quick delivery)<br>
+            • No fixed schedule
+          </td>
+          <td>
+            • Slow for long distances<br>
+            • Costly per km for heavy goods<br>
+            • Accidents; traffic congestion<br>
+            • Weather affects unpaved roads
+          </td>
+          <td>
+            India has 3rd largest road network in world.<br>
+            Types: NH → SH → District roads → Village roads<br>
+            NHAI builds and maintains national highways
+          </td>
+        </tr>
+        <tr>
+          <td><strong>🚆 Railways</strong></td>
+          <td>
+            • Suitable for long distances &amp; heavy goods<br>
+            • Mass transportation<br>
+            • Cheaper than road for bulk cargo<br>
+            • Less affected by weather<br>
+            • Energy efficient
+          </td>
+          <td>
+            • Fixed routes — can't reach everywhere<br>
+            • High construction cost<br>
+            • Schedule-bound<br>
+            • Not suitable for door-to-door
+          </td>
+          <td>
+            India has 4th largest rail network in world.<br>
+            Gauge types: Broad &gt; Meter &gt; Narrow<br>
+            Indian Railways — one of largest public employers
+          </td>
+        </tr>
+        <tr>
+          <td><strong>✈️ Airways</strong></td>
+          <td>
+            • Fastest mode<br>
+            • Can cross difficult terrain (mountains, sea)<br>
+            • Useful for high-value, perishable cargo<br>
+            • International connectivity<br>
+            • Essential for emergency/disaster response
+          </td>
+          <td>
+            • Most expensive — 70% of Indians can't afford it ⭐<br>
+            • Affected by bad weather (fog, cyclone)<br>
+            • Not for heavy/bulk goods<br>
+            • High fuel consumption; high emissions
+          </td>
+          <td>
+            Major airports: IGIA Delhi, CST Mumbai, Bengaluru<br>
+            International: Air India<br>
+            Domestic: IndiGo, SpiceJet, Air India
+          </td>
+        </tr>
+        <tr>
+          <td><strong>🚢 Waterways</strong></td>
+          <td>
+            • Cheapest for bulk goods<br>
+            • Environmentally friendly (lowest emissions)<br>
+            • No wear and tear on roads<br>
+            • Ocean shipping — lifeline for international trade
+          </td>
+          <td>
+            • Very slow<br>
+            • Limited to rivers, coasts, oceans<br>
+            • Inland water routes limited in India<br>
+            • Affected by tides, storms, floods
+          </td>
+          <td>
+            Major ports: Mumbai, Chennai, Kolkata, Visakhapatnam<br>
+            Inland waterways: Ganga (NW1), Brahmaputra (NW2), W Coast Canal (NW3)<br>
+            Coastal shipping: along India's 7,500 km coastline
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="sec-title">🎯 Common "Give a Reason" Questions</div>
+    <table class="styled-table">
+      <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>Why are roadways important in India?</td><td>Low investment compared to railways; can be built anywhere including high altitudes and remote villages; provide door-to-door service</td></tr>
+        <tr><td>Why don't 70% of Indians use air transport?</td><td>It is the most expensive mode of transport; too costly for average or poor citizens</td></tr>
+        <tr><td>Why are South Indian rivers not suitable for inland waterways?</td><td>Most S Indian rivers are non-perennial (seasonal); they flow swiftly over plateaus and highlands; water level too low in dry season for navigation</td></tr>
+        <tr><td>Why is water transport not as popular as land transport?</td><td>Water transport is much slower; limited to specific water bodies; India's river network doesn't connect all major cities; seasonal limitations</td></tr>
+        <tr><td>Advantage of coastal shipping?</td><td>It is environmentally friendly (lowest fuel per tonne-km); very economical for heavy bulk cargo along India's long coastline</td></tr>
+        <tr><td>Why is a well-developed transport network important for industry?</td><td>It helps in bringing raw materials to industries and finished goods to markets; expands the market area; reduces production costs</td></tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+<!-- ░░░░░░░░░ CHAPTER 12: WASTE MANAGEMENT ░░░░░░░░░ -->
+<section id="ch-waste" class="chapter-page ch-waste">
+  <div class="chapter-hero" style="background:linear-gradient(135deg,#004D40,#00695C,#00897B)">
+    <span class="chapter-emoji">♻️</span>
+    <div class="chapter-title">Waste Management</div>
+    <div class="chapter-subtitle">Impact of waste, need for management, and methods for safer disposal and recycling.</div>
+    <div class="chapter-num">12</div>
+  </div>
+
+  <div class="content-area">
+
+    <div class="sec-title">💥 Impact of Waste Accumulation</div>
+    <div class="cards-grid">
+      <div class="card card-tinted card-border">
+        <span class="card-icon">👁️</span>
+        <div class="card-title">Landscape Spoilage</div>
+        <div class="card-body">Waste dumps and littering make areas ugly; open landfills create unsightly mounds; debris affects tourism</div>
+      </div>
+      <div class="card card-tinted card-border">
+        <span class="card-icon">💨</span>
+        <div class="card-title">Air Pollution</div>
+        <div class="card-body">Open burning of waste releases CO, CO₂, dioxins, toxic fumes; methane from landfills is a greenhouse gas</div>
+      </div>
+      <div class="card card-tinted card-border">
+        <span class="card-icon">🤒</span>
+        <div class="card-title">Health Hazards</div>
+        <div class="card-body">Garbage breeding ground for mosquitoes, flies, rats → malaria, dengue, cholera, typhoid; leachate contaminates groundwater</div>
+      </div>
+      <div class="card card-tinted card-border">
+        <span class="card-icon">🌿</span>
+        <div class="card-title">Terrestrial Life</div>
+        <div class="card-body">Plastic and chemicals in soil kill micro-organisms; reduces soil fertility; animals eat plastic and die</div>
+      </div>
+      <div class="card card-tinted card-border">
+        <span class="card-icon">🐟</span>
+        <div class="card-title">Fresh Water Life</div>
+        <div class="card-body">Industrial waste kills fish; excess nutrients cause eutrophication (algae bloom, oxygen depletion); rivers and lakes become toxic</div>
+      </div>
+      <div class="card card-tinted card-border">
+        <span class="card-icon">🐋</span>
+        <div class="card-title">Marine Life</div>
+        <div class="card-body">Plastic in oceans accumulates — Great Pacific Garbage Patch; marine animals mistake plastic for food; oil spills harm sea birds and fish</div>
+      </div>
+    </div>
+
+    <div class="sec-title">🗑️ Methods of Waste Disposal</div>
+
+    <div class="accordion">
+      <div class="acc-header" onclick="toggleAcc(this)">🔬 Segregation — First Step <span class="acc-arrow">▼</span></div>
+      <div class="acc-body">
+        <p>Separating waste at source into categories before disposal — makes all other methods more effective.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px">
+          <div class="compare-block" style="--block-color:#2E7D32;border-top:3px solid #2E7D32">
+            <h4 style="color:#2E7D32">🟢 Biodegradable (Wet)</h4>
+            <ul>
+              <li>Kitchen waste (vegetable/fruit peels)</li>
+              <li>Food scraps, garden waste</li>
+              <li>Paper, natural cloth</li>
+              <li>→ Can be composted</li>
+            </ul>
+          </div>
+          <div class="compare-block" style="--block-color:#D32F2F;border-top:3px solid #D32F2F">
+            <h4 style="color:#D32F2F">🔴 Non-Biodegradable (Dry)</h4>
+            <ul>
+              <li>Plastics, synthetic fibres</li>
+              <li>Glass, metals, batteries</li>
+              <li>E-waste (old phones, circuits)</li>
+              <li>→ Must be recycled or safely buried</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="acc-header" onclick="toggleAcc(this)">🏗️ Dumping — Landfills <span class="acc-arrow">▼</span></div>
+      <div class="acc-body">
+        <p><strong>Open Dump:</strong> Waste simply left in open areas — dangerous (attracts pests, pollutes groundwater, fires). This is the least safe method.</p>
+        <p style="margin-top:8px"><strong>Sanitary Landfill:</strong> More scientific method — waste compacted and covered with layers of soil; liners prevent leachate from entering groundwater; methane collected for energy. Better but still not ideal.</p>
+        <div class="info-box note" style="margin-top:8px">Landfills take up large areas of land, cannot be built on for years, and still pollute surroundings. Composting and recycling are always preferred.</div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="acc-header" onclick="toggleAcc(this)">🌱 Composting — Turning Waste into Resource <span class="acc-arrow">▼</span></div>
+      <div class="acc-body">
+        <p>Organic (biodegradable) waste is decomposed by micro-organisms under controlled conditions to produce <strong>compost</strong> — a nutrient-rich natural fertilizer.</p>
+        <p style="margin-top:8px"><strong>Methods:</strong> Pit composting, vermicomposting (using earthworms), biogas plants</p>
+        <p style="margin-top:8px"><strong>Benefits:</strong> Returns nutrients to soil; reduces dependence on chemical fertilizers; reduces waste volume significantly; cheap and simple</p>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="acc-header" onclick="toggleAcc(this)">🔥 Incineration — Burning at High Temperature <span class="acc-arrow">▼</span></div>
+      <div class="acc-body">
+        <p>Waste burned at very high temperatures (800–1200°C) in special incinerators. Reduces waste volume by 90%. Used mainly for hospital/medical waste and hazardous waste.</p>
+        <p style="margin-top:8px"><strong>Advantage:</strong> Reduces volume drastically; can generate energy (waste-to-energy plants)</p>
+        <p style="margin-top:8px"><strong>Disadvantage:</strong> Releases toxic fumes (dioxins) if not properly filtered; expensive</p>
+      </div>
+    </div>
+
+    <!-- 3Rs -->
+    <div class="sec-title">🔄 The 3Rs — Best Approach to Waste <span class="badge badge-imp">⭐ Always Asked</span></div>
+    <div class="cards-grid-3">
+      <div class="card" style="border-top:5px solid #2196F3;background:#E3F2FD">
+        <span class="card-icon" style="font-size:32px">🚫</span>
+        <div class="card-title" style="color:#1565C0;font-size:18px">REDUCE</div>
+        <div class="card-body">
+          Use <strong>less</strong> in the first place.<br><br>
+          Examples: Avoid single-use plastics; buy only what you need; choose products with less packaging; turn off lights/water when not in use.
+        </div>
+      </div>
+      <div class="card" style="border-top:5px solid #4CAF50;background:#E8F5E9">
+        <span class="card-icon" style="font-size:32px">🔁</span>
+        <div class="card-title" style="color:#2E7D32;font-size:18px">REUSE</div>
+        <div class="card-body">
+          Use items <strong>again</strong> before throwing away.<br><br>
+          Examples: Refill water bottles; use cloth bags; repair broken items instead of replacing; donate old clothes and books.
+        </div>
+      </div>
+      <div class="card" style="border-top:5px solid #FF9800;background:#FFF3E0">
+        <span class="card-icon" style="font-size:32px">♻️</span>
+        <div class="card-title" style="color:#E65100;font-size:18px">RECYCLE</div>
+        <div class="card-body">
+          Convert waste into <strong>new products</strong>.<br><br>
+          Examples: Paper → recycled paper; Glass → new glass; Aluminium → new cans; Plastic → furniture/pipes. Creates jobs and reduces mining.
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box remember">Order of priority: <strong>Reduce > Reuse > Recycle</strong>. Reducing waste at the source is always better than dealing with it later. Recycling still uses energy — it's the last resort of the 3Rs.</div>
+
+    <div class="sec-title">🌊 Need for Waste Management</div>
+    <div class="pills">
+      <span class="pill">Prevents water contamination</span>
+      <span class="pill">Reduces health risks</span>
+      <span class="pill">Protects wildlife and ecosystems</span>
+      <span class="pill">Reduces greenhouse gas emissions</span>
+      <span class="pill">Conserves natural resources</span>
+      <span class="pill">Makes cities cleaner and liveable</span>
+      <span class="pill">Creates employment in recycling sector</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ░░░░░░░░░ QUICK REVISION ░░░░░░░░░ -->
+<section id="ch-revise" class="chapter-page ch-revise">
+  <div class="chapter-hero" style="background:linear-gradient(135deg,#311B92,#4527A0,#5E35B1)">
+    <span class="chapter-emoji">⚡</span>
+    <div class="chapter-title">Quick Revision</div>
+    <div class="chapter-subtitle">Key points, must-know facts, and high-frequency exam answers — one click per chapter.</div>
+    <div class="chapter-num">✓</div>
+  </div>
+
+  <div class="content-area">
+
+    <div class="info-box imp">This page is for last-minute revision. Every point here has appeared in past ICSE papers. Read through before your exam!</div>
+
+    <!-- Climate -->
+    <div class="qr-chapter">
+      <div class="qr-header" style="--qr-color:#1976D2" onclick="toggleQR(this)">
+        <h3>🌤 Climate — Top Points</h3><span style="font-size:12px;opacity:0.8">Click to expand ▼</span>
+      </div>
+      <div class="qr-body" style="--qr-color:#1976D2">
+        <ul class="qr-list">
+          <li>India has <strong>Tropical Monsoon Climate</strong> — seasonal reversal of winds is its key feature</li>
+          <li>Monsoon = <strong>periodic wind</strong>; SW in summer (rain-bearing), NE in winter (dry)</li>
+          <li>Low pressure over NW India in summer → pulls in ocean winds → SW Monsoon begins</li>
+          <li>Mawsynram (Meghalaya) = highest rainfall in world (~1187 cm/yr) due to <strong>funnel-shaped Khasi Hills</strong></li>
+          <li>Tamil Nadu gets rain during <strong>Retreating Monsoon</strong> (Oct–Nov) via NE winds from Bay of Bengal</li>
+          <li>Coastal cities (Mumbai) have moderate temp range; interior cities (Delhi) have extreme range</li>
+          <li>Goa > Puducherry in summer rainfall: Goa = windward side of Western Ghats</li>
+          <li>Loo = hot dry wind in N India during summer (May–June)</li>
+          <li><strong>Kalbaisakhi (Nor'westers)</strong> = pre-monsoon showers in WB, Assam — helps tea, jute, rice</li>
+          <li>Summer season: March–May | Monsoon: June–September | Retreating: Oct–Nov | Winter: Dec–Feb</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Soil -->
+    <div class="qr-chapter">
+      <div class="qr-header" style="--qr-color:#6D4C41" onclick="toggleQR(this)">
+        <h3>🌍 Soil — Top Points</h3><span style="font-size:12px;opacity:0.8">Click to expand ▼</span>
+      </div>
+      <div class="qr-body" style="--qr-color:#6D4C41">
+        <ul class="qr-list">
+          <li>Alluvial = most fertile, most widespread; rich in potash; deficient in nitrogen</li>
+          <li><strong>Khadar</strong> = new alluvial (near rivers, more fertile); <strong>Bhangar</strong> = old alluvial (kankar nodules)</li>
+          <li>Black soil formed from weathering of <strong>basic igneous rocks</strong> (basalt/Deccan Trap)</li>
+          <li>Black soil = self-ploughing; retains moisture; ideal for <strong>cotton</strong></li>
+          <li>Red soil = red because of <strong>iron oxide</strong>; poor in nitrogen and humus; dry farming preferred</li>
+          <li>Laterite = formed by <strong>leaching</strong> in heavy rain; hard when dry → used as <strong>building material</strong></li>
+          <li>Laterite crops: <strong>Tea, Coffee, Cashew</strong> (with manure addition)</li>
+          <li>Terrace farming = ideal for hilly regions (slows runoff, holds soil)</li>
+          <li>Wind erosion common in arid regions — low moisture, sparse vegetation, wind lifts topsoil</li>
+          <li>Deepening river beds prevents flooding and therefore shore/bank erosion</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Vegetation -->
+    <div class="qr-chapter">
+      <div class="qr-header" style="--qr-color:#2E7D32" onclick="toggleQR(this)">
+        <h3>🌿 Natural Vegetation — Top Points</h3><span style="font-size:12px;opacity:0.8">Click to expand ▼</span>
+      </div>
+      <div class="qr-body" style="--qr-color:#2E7D32">
+        <ul class="qr-list">
+          <li>Tropical Evergreen: >200 cm rain; Ebony, Mahogany; no definite leafless period</li>
+          <li>Evergreen forests are hard to exploit: dense, no transport, great variety, heavy hardwood</li>
+          <li>Deciduous forests = most widespread in India (~60%); shed leaves for 6–8 weeks in March–April</li>
+          <li>Teak = most commercially valuable deciduous tree</li>
+          <li>Desert/Thorn forests: <70 cm rain; stunted growth due to <strong>lack of water and minerals</strong></li>
+          <li>Littoral/Mangrove: tidal areas; <strong>Sundarbans</strong> = world's largest mangrove; Sundri tree</li>
+          <li>Mangrove roots = <strong>pneumatophores</strong> (above-ground roots for oxygen)</li>
+          <li>Mountain vegetation changes with altitude — <strong>altitudinal zonation</strong></li>
+          <li>Increase in forest cover recently due to <strong>Social Forestry</strong> programs</li>
+          <li>JFM = Joint Forest Management (communities protect forests in exchange for benefits)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Water -->
+    <div class="qr-chapter">
+      <div class="qr-header" style="--qr-color:#0277BD" onclick="toggleQR(this)">
+        <h3>💧 Water Resources — Top Points</h3><span style="font-size:12px;opacity:0.8">Click to expand ▼</span>
+      </div>
+      <div class="qr-body" style="--qr-color:#0277BD">
+        <ul class="qr-list">
+          <li>Modern irrigation methods (drip, sprinkler) minimize water loss and fertilizer loss</li>
+          <li>Canal irrigation: flat plains, perennial rivers (Punjab, UP, Haryana)</li>
+          <li>Tank irrigation: rocky Deccan Plateau (TN, Karnataka, AP) — rivers are non-perennial</li>
+          <li>Tube wells popular in Punjab: alluvial soil → easy drilling; high water table; reliable</li>
+          <li>South India not suited for canal irrigation: rocky, non-perennial rivers</li>
+          <li>Rooftop RWH = rain collected from rooftop → filtered → stored → recharges groundwater</li>
+          <li>RWH importance: reduces piped water dependence; recharges depleting aquifers; cheap</li>
+          <li>Inundation canal = canal from river without a dam/barrage to control flow</li>
+          <li>Irrigation essential: monsoon is uncertain, unreliable; needed for Rabi crops in dry winter</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Minerals -->
+    <div class="qr-chapter">
+      <div class="qr-header" style="--qr-color:#BF360C" onclick="toggleQR(this)">
+        <h3>⛏️ Minerals &amp; Energy — Top Points</h3><span style="font-size:12px;opacity:0.8">Click to expand ▼</span>
+      </div>
+      <div class="qr-body" style="--qr-color:#BF360C">
+        <ul class="qr-list">
+          <li>Black soil formed from <strong>igneous rocks</strong>; Copper used for electric wires → <strong>good conductor</strong></li>
+          <li>Manganese from <strong>Balaghat, MP</strong>; Copper from <strong>Khetri, Rajasthan</strong></li>
+          <li>Iron ore: Magnetite (best, 72%); Hematite (most commercial)</li>
+          <li>Jharia (Jharkhand) = largest coalfield; Digboi (Assam) = oldest oil field; Mumbai High = largest offshore</li>
+          <li>Petroleum = "Liquid Gold" — high utility as energy + raw material for many industries</li>
+          <li>Bhakra Nangal = on <strong>Sutlej river</strong>; largest multi-purpose project; creates Gobind Sagar</li>
+          <li>Hirakud = on <strong>Mahanadi river</strong>; longest dam; Odisha; benefits mining industries</li>
+          <li>Nuclear fuel = <strong>Uranium</strong>; Tarapur (Maharashtra) = first nuclear plant</li>
+          <li>India ideal for solar: <strong>tropical country</strong>, 300+ sunny days, Rajasthan has maximum potential</li>
+          <li>Biogas: organic waste → methane by anaerobic bacteria; slurry = fertilizer</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Agriculture -->
+    <div class="qr-chapter">
+      <div class="qr-header" style="--qr-color:#558B2F" onclick="toggleQR(this)">
+        <h3>🌾 Agriculture — Top Points</h3><span style="font-size:12px;opacity:0.8">Click to expand ▼</span>
+      </div>
+      <div class="qr-body" style="--qr-color:#558B2F">
+        <ul class="qr-list">
+          <li>Kharif = June–Sep (rice, cotton, jute, sugarcane); Rabi = Oct–Mar (wheat, mustard, gram)</li>
+          <li>Wheat confined to N India → temperate crop, needs cool (10–15°C) winters</li>
+          <li>Cotton needs <strong>black regur soil</strong> and dry weather during boll formation</li>
+          <li>Gujarat = largest cotton producer; UP = largest sugarcane producer</li>
+          <li>Jute = "Golden Fibre"; WB = 80% of production; processing = retting</li>
+          <li>Tea: hill slopes, Assam (largest); well-drained acidic soil; processing → pluck→wither→roll→ferment→dry</li>
+          <li>Coffee: Karnataka = 70%; Arabica (better quality), Robusta; needs shade</li>
+          <li>Sugar factories near fields: <strong>sucrose drops within 24 hours</strong> of harvesting</li>
+          <li>Ratoon cropping: old sugarcane roots regrow → matures earlier, costs less ⭐</li>
+          <li>Mixed farming gives security: if crops fail, livestock income compensates</li>
+          <li>Shifting cultivation (Jhum) — NE India; causes soil erosion; traditional but destructive</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Industry -->
+    <div class="qr-chapter">
+      <div class="qr-header" style="--qr-color:#37474F" onclick="toggleQR(this)">
+        <h3>🏭 Manufacturing — Top Points</h3><span style="font-size:12px;opacity:0.8">Click to expand ▼</span>
+      </div>
+      <div class="qr-body" style="--qr-color:#37474F">
+        <ul class="qr-list">
+          <li>TISCO = Jamshedpur, Jharkhand (private, oldest, 1907)</li>
+          <li>Bhilai = Chhattisgarh (Russian collab); iron ore from <strong>Bailadila, Durg</strong></li>
+          <li>Rourkela = Odisha (German); Vishakhapatnam = AP (Soviet); only <strong>coastal steel plant</strong></li>
+          <li>Ahmedabad = "Manchester of India" — cotton textile; near cotton belt, humid climate</li>
+          <li>Karnataka = silk hub; favourable climate for silkworms; Mysore, Kolar</li>
+          <li>Sugar S India > N India: higher sucrose, longer crushing season, modern mills</li>
+          <li>Sugar by-products: Bagasse (paper, fuel), Molasses (alcohol), Press mud (fertilizer)</li>
+          <li>Petrochemical industries near oil refineries (get raw materials — naphtha, ethylene)</li>
+          <li>Bengaluru = "Silicon Valley of India" — IT and electronics hub</li>
+          <li>Cottage industries: need less capital, suit our economy, provide rural employment</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Transport -->
+    <div class="qr-chapter">
+      <div class="qr-header" style="--qr-color:#E65100" onclick="toggleQR(this)">
+        <h3>🚆 Transport — Top Points</h3><span style="font-size:12px;opacity:0.8">Click to expand ▼</span>
+      </div>
+      <div class="qr-body" style="--qr-color:#E65100">
+        <ul class="qr-list">
+          <li>Roadways important: low cost, door-to-door, can reach all terrain including high altitudes</li>
+          <li>70% of Indians don't use airways → <strong>too expensive</strong></li>
+          <li>S Indian rivers not for inland waterways: non-perennial, swift-flowing over plateau</li>
+          <li>Water transport not popular: slow, limited routes, seasonal</li>
+          <li>Coastal shipping advantage: environmentally friendly, cheapest for bulk goods</li>
+          <li>India = 3rd largest road network; 4th largest railway network in world</li>
+          <li>Railways = best for long-distance heavy goods; mass transport; cheaper per tonne-km</li>
+          <li>Airways = fastest, crosses any terrain; essential for disaster relief and remote connectivity</li>
+          <li>Transport helps industry: brings raw materials, takes goods to market, expands market</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Waste -->
+    <div class="qr-chapter">
+      <div class="qr-header" style="--qr-color:#00695C" onclick="toggleQR(this)">
+        <h3>♻️ Waste Management — Top Points</h3><span style="font-size:12px;opacity:0.8">Click to expand ▼</span>
+      </div>
+      <div class="qr-body" style="--qr-color:#00695C">
+        <ul class="qr-list">
+          <li>Waste accumulation causes: landscape spoilage, air/water pollution, health hazards, harm to all ecosystems</li>
+          <li>Eutrophication = excess nutrients → algae bloom → oxygen depletion → aquatic life dies (fresh water)</li>
+          <li>Segregation = separating biodegradable (wet) and non-biodegradable (dry) waste at source</li>
+          <li>Composting: organic waste decomposed by microbes → nutrient-rich compost/manure</li>
+          <li>Sanitary landfill > open dump; waste compacted, covered with soil, leachate lined</li>
+          <li>3Rs priority order: <strong>Reduce > Reuse > Recycle</strong></li>
+          <li>Reduce = use less; Reuse = use again; Recycle = convert to new product</li>
+          <li>Recycling still uses energy — reducing at source is always best</li>
+          <li>E-waste (electronics) is hazardous — contains lead, mercury; needs special disposal</li>
+          <li>Plastics in oceans accumulate in marine food chains (bioaccumulation) harming all marine life</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Important Numbers -->
+    <div class="sec-title" style="margin-top:32px">🔢 Numbers &amp; Names to Remember</div>
+    <table class="styled-table">
+      <thead><tr><th>Fact</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Highest rainfall in world</td><td>Mawsynram, Meghalaya (~1187 cm/yr)</td></tr>
+        <tr><td>Longest dam in world</td><td>Hirakud Dam, Odisha (25.8 km)</td></tr>
+        <tr><td>India's railway network rank</td><td>4th largest in world</td></tr>
+        <tr><td>India's road network rank</td><td>3rd largest in world</td></tr>
+        <tr><td>Cotton sucrose: time limit</td><td>24 hours after harvest (sucrose drops) ⭐</td></tr>
+        <tr><td>Forest cover target (National Forest Policy)</td><td>33% of India's land area</td></tr>
+        <tr><td>First nuclear plant in India</td><td>Tarapur, Maharashtra</td></tr>
+        <tr><td>Oldest oil field in India</td><td>Digboi, Assam</td></tr>
+        <tr><td>Largest offshore oil field</td><td>Mumbai High</td></tr>
+        <tr><td>Oldest iron and steel plant</td><td>TISCO, Jamshedpur (1907)</td></tr>
+        <tr><td>Karnataka's share of Indian silk</td><td>~70%</td></tr>
+        <tr><td>Karnataka's share of Indian coffee</td><td>~70%</td></tr>
+        <tr><td>West Bengal's share of Indian jute</td><td>~80%</td></tr>
+        <tr><td>Bhakra Nangal river</td><td>Sutlej (Punjab–HP border)</td></tr>
+        <tr><td>Hirakud river</td><td>Mahanadi (Odisha)</td></tr>
+        <tr><td>India's coastline length</td><td>~7,516 km</td></tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>
+
+</main>
+
+<script>
+// ─── Navigation ───
+function showChapter(id){
+  // Update pages
+  document.querySelectorAll('.chapter-page').forEach(p => p.classList.remove('active'));
+  const page = document.getElementById('ch-' + id);
+  if(page) page.classList.add('active');
+
+  // Update nav items
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+
+  // Scroll to top
+  document.getElementById('main').scrollTop = 0;
+  window.scrollTo(0,0);
+}
+
+// ─── Accordion ───
+function toggleAcc(header){
+  const body = header.nextElementSibling;
+  const isOpen = header.classList.contains('open');
+  
+  // Close all in same parent
+  const parent = header.closest('.content-area, .qr-body');
+  if(parent){
+    parent.querySelectorAll('.acc-header.open').forEach(h => {
+      if(h !== header){
+        h.classList.remove('open');
+        h.nextElementSibling.classList.remove('open');
+      }
+    });
+  }
+
+  header.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+
+// ─── Crop Cards ───
+function toggleCrop(header){
+  const body = header.nextElementSibling;
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  header.querySelector('span:last-child').textContent = isOpen ? 'Click to expand ▼' : 'Click to collapse ▲';
+}
+
+// ─── Quick Revision ───
+function toggleQR(header){
+  const body = header.nextElementSibling;
+  const isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  header.querySelector('span').textContent = isOpen ? 'Click to expand ▼' : 'Click to collapse ▲';
+}
+
+// ─── Open first accordion on each page by default when navigating ───
+document.addEventListener('DOMContentLoaded', () => {
+  // Set first QR chapter open
+  const firstQR = document.querySelector('.qr-header');
+  if(firstQR){
+    firstQR.nextElementSibling.classList.add('open');
+    firstQR.querySelector('span').textContent = 'Click to collapse ▲';
+  }
+});
+</script>
+
+</body>
+</html>
